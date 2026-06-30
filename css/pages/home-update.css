@@ -1,0 +1,132 @@
+/* ============================================================
+   home-update.css  —  v3  (clean)
+   Only handles layout additions not in home.css or playful-theme.css:
+     1. Hero mascot image
+     2. School photo band
+     3. Footer SVG icon alignment
+   Dropdowns and all colours now live in playful-theme.css.
+   ============================================================ */
+
+
+/* ── 1. HERO MASCOT ── */
+
+/* Override home.css grid to flex so mascot sits beside content */
+.hero__inner {
+    display: flex !important;
+    align-items: flex-end !important;
+    gap: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  .hero__content {
+    flex: 1;
+    min-width: 0;
+    padding-bottom: var(--sp-8);
+  }
+  
+  .hero__mascot {
+    flex-shrink: 0;
+    width: clamp(220px, 28vw, 380px);
+    align-self: flex-end;
+    pointer-events: none;
+    animation: mascotIn 0.7s 0.35s ease both;
+  }
+  
+  .hero__mascot img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.15));
+  }
+  
+  @keyframes mascotIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  
+  @media (max-width: 900px) {
+    .hero__mascot { width: clamp(160px, 22vw, 260px); }
+  }
+  
+  @media (max-width: 640px) {
+    .hero__mascot { display: none; }
+    .hero__content { padding-bottom: var(--sp-7); }
+  }
+  
+  
+  /* ── 2. SCHOOL PHOTO BAND ── */
+  
+  .school-photo-band {
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+  
+  .school-photo-band__img-wrap {
+    position: relative;
+    width: 100%;
+    max-height: 420px;
+    overflow: hidden;
+  }
+  
+  .school-photo-band__img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    object-position: center 40%;
+    display: block;
+    transition: transform 6s ease;
+  }
+  
+  .school-photo-band:hover .school-photo-band__img {
+    transform: scale(1.03);
+  }
+  
+  .school-photo-band__overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(10,30,20,0.55) 0%, transparent 100%);
+    padding-bottom: 20px;
+  }
+  
+  .school-photo-band__caption {
+    display: flex;
+    align-items: flex-end;
+    height: 80px;
+  }
+  
+  .school-photo-band__caption-text {
+    color: rgba(255,255,255,0.88);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0 0 4px;
+  }
+  
+  @media (max-width: 768px) {
+    .school-photo-band__img      { height: 220px; }
+    .school-photo-band__img-wrap { max-height: 220px; }
+  }
+  
+  
+  /* ── 3. FOOTER SVG ICON ALIGNMENT ── */
+  
+  .footer__contact-icon svg {
+    display: inline-block;
+    vertical-align: middle;
+    opacity: 0.75;
+    flex-shrink: 0;
+  }
+  
+  .footer__contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .footer__contact-icon {
+    margin-top: 2px;
+    line-height: 1;
+  }

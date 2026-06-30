@@ -299,7 +299,7 @@
 }
 
 
-/* ── HOME NEWS GRID (scoped inside .home-block to avoid conflict with news.css) ── */
+/* ── HOME NEWS GRID ── */
 .home-block .home-news-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
@@ -449,17 +449,6 @@
   color: var(--navy);
 }
 
-.quicklink-item__icon {
-  width: 30px;
-  height: 30px;
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 17px;
-  flex-shrink: 0;
-}
-
 .quicklink-item__arrow {
   margin-left: auto;
   color: var(--text-light);
@@ -483,7 +472,7 @@
   font-size: 17px;
   font-weight: 700;
   color: #fff;
-  border: 2px solid var(--navy);
+  border: 2px solid rgba(255,255,255,0.3);
   margin-right: -8px;
   flex-shrink: 0;
 }
@@ -532,7 +521,7 @@
 }
 
 .journal-mini-card__cover span { font-size: 22px; }
-.journal-mini-card__cover p   { font-size: 9px; color: var(--text-light); text-align: center; margin: 0; font-family: 'Noto Sans TC', sans-serif; }
+.journal-mini-card__cover p   { font-size: 9px; color: var(--text-light); text-align: center; margin: 0; }
 .journal-mini-card__cover img { width: 100%; height: 100%; object-fit: cover; }
 
 .journal-mini-card__info { flex: 1; }
@@ -563,22 +552,12 @@
   border-radius: var(--radius-md);
 }
 
-.aqi-widget__score--good { background: #e6f4ea; }
+.aqi-widget__score--good     { background: #e2f7ed; }
 .aqi-widget__score--moderate { background: #fef9e6; }
-.aqi-widget__score--poor { background: #fdecea; }
+.aqi-widget__score--poor     { background: #fdecea; }
 
-.aqi-widget__num {
-  font-size: 34px;
-  font-weight: 800;
-  color: #1a6b4f;
-  line-height: 1;
-}
-
-.aqi-widget__label {
-  font-size: 18px;
-  font-weight: 700;
-  color: #1a6b4f;
-}
+.aqi-widget__num   { font-size: 34px; font-weight: 800; color: #2a9460; line-height: 1; }
+.aqi-widget__label { font-size: 18px; font-weight: 700; color: #2a9460; }
 
 .aqi-widget__desc {
   font-size: 17px;
@@ -593,11 +572,10 @@
   color: var(--navy);
   transition: color var(--t-fast);
 }
-
 .aqi-widget__link:hover { color: var(--orange); }
 
 
-/* ── PROGRAMS GRID (kept from original home.css) ── */
+/* ── PROGRAMS GRID ── */
 .programs-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
@@ -678,10 +656,24 @@
   justify-content: center;
   font-size: 24px;
   margin: 0 auto var(--sp-3);
+  overflow: hidden;
 }
 
+.nearby-card__icon img { width: 100%; height: 100%; object-fit: cover; }
 .nearby-card h4 { font-size: 17px; color: var(--navy); margin-bottom: var(--sp-1); }
 .nearby-card p  { font-size: 17px; color: var(--text-muted); line-height: 1.55; }
+
+
+/* ── FADE-IN ANIMATION ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 
 /* ============================================================
@@ -707,19 +699,19 @@
 
   .stats-strip__list { flex-wrap: wrap; }
   .stats-strip__item { flex: 1 1 50%; border-right: none; border-bottom: 1px solid var(--border); }
-  .stats-strip__item:nth-child(odd)    { border-right: 1px solid var(--border); }
-  .stats-strip__item:nth-last-child(-n+2) { border-bottom: none; }
+  .stats-strip__item:nth-child(odd)          { border-right: 1px solid var(--border); }
+  .stats-strip__item:nth-last-child(-n+2)    { border-bottom: none; }
 
   .home-block .home-news-grid { grid-template-columns: 1fr; }
   .home-block .home-news-card { border-right: none; border-bottom: 1px solid var(--border); }
   .home-block .home-news-card:last-child { border-bottom: none; }
 
-  .home-sidebar   { grid-template-columns: 1fr; }
-  .grid-4         { grid-template-columns: repeat(2, 1fr); }
+  .home-sidebar { grid-template-columns: 1fr; }
+  .grid-4       { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 480px) {
-  .hero__card     { grid-template-columns: 1fr; }
-  .hero__title    { font-size: clamp(30px, 8vw, 42px); }
-  .grid-4         { grid-template-columns: 1fr; }
+  .hero__card  { grid-template-columns: 1fr; }
+  .hero__title { font-size: clamp(30px, 8vw, 42px); }
+  .grid-4      { grid-template-columns: 1fr; }
 }

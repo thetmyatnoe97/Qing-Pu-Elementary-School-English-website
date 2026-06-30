@@ -14,45 +14,120 @@
 
   <a class="skip-link" href="#main">Skip to main content</a>
 
-  <!-- ── NAVBAR ── -->
-  <nav class="navbar" aria-label="Main navigation">
-    <div class="container navbar__inner">
-      <a href="index.html" class="navbar__logo" aria-label="Qing Pu Elementary School — home">
-        <div class="navbar__logo-img" aria-hidden="true"><img src="images/History/logo.png" alt=""></div>
-        <div class="navbar__logo-text">
-          <span class="navbar__name">Qing Pu Elementary School</span>
-          <span class="navbar__sub">青埔國小 · Taoyuan, Taiwan</span>
-        </div>
-      </a>
-      <ul class="navbar__links" role="list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="bilingual.html">Bilingual</a></li>
-        <li><a href="teachers.html">Teachers</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="visit.html">Visit</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener" class="navbar__lang" aria-label="Switch to Chinese website">🇹🇼 中文</a>
-      <button class="navbar__toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-    <div class="navbar__mobile" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="bilingual.html">Bilingual education</a>
-      <a href="teachers.html">Bilingual teachers</a>
-      <a href="news.html">News</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="visit.html">Visit us</a>
-      <a href="contact.html">Contact</a>
-      <div class="navbar__mobile-lang">
-        <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener">🇹🇼 View Chinese website →</a>
+<!-- ── NAVBAR ── -->
+<nav class="navbar" aria-label="Main navigation">
+  <div class="container navbar__inner">
+
+    <a href="index.html" class="navbar__logo" aria-label="Qing Pu Elementary School — home">
+      <div class="navbar__logo-img" aria-hidden="true"><img src="images/History/logo.png" alt=""></div>
+      <div class="navbar__logo-text">
+        <span class="navbar__name">Qing Pu Elementary School</span>
+        <span class="navbar__sub">青埔國小 · Taoyuan, Taiwan</span>
       </div>
+    </a>
+
+    <!-- Desktop nav with dropdowns — ALL items -->
+    <ul class="navbar__links" role="list">
+
+      <li class="has-dropdown">
+        <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">
+          Home <span class="nav-caret" aria-hidden="true"></span>
+        </button>
+        <ul class="nav-dropdown" role="list">
+          <li><a href="index.html">Home Page</a></li>
+          <li><a href="index.html#honours-heading">Honours Board</a></li>
+          <li><a href="index.html#news-heading">Latest News</a></li>
+          <li><a href="index.html#calendar-heading">School Calendar</a></li>
+          <li><a href="index.html#bilingual-heading">Bilingual Overview</a></li>
+          <li><a href="index.html#nearby-heading">Our Neighbourhood</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">
+          About <span class="nav-caret" aria-hidden="true"></span>
+        </button>
+        <ul class="nav-dropdown" role="list">
+          <li><a href="about.html">School Overview</a></li>
+          <li><a href="about.html#history">History &amp; Milestones</a></li>
+          <li><a href="about.html#vision">Vision &amp; Values</a></li>
+          <li><a href="about.html#student-life">Student Life</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">
+          Bilingual <span class="nav-caret" aria-hidden="true"></span>
+        </button>
+        <ul class="nav-dropdown" role="list">
+          <li><a href="curriculum.html">Programme Overview</a></li>
+          <li><a href="curriculum.html#curriculum">Curriculum by Grade</a></li>
+          <li><a href="curriculum.html#journal">English Journal</a></li>
+          <li><a href="teachers.html">Bilingual Teachers</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">
+          News <span class="nav-caret" aria-hidden="true"></span>
+        </button>
+        <ul class="nav-dropdown" role="list">
+          <li><a href="news.html">All News &amp; Events</a></li>
+          <li><a href="news.html?cat=event">Events</a></li>
+          <li><a href="news.html?cat=award">Awards</a></li>
+          <li><a href="news.html?cat=announcement">Announcements</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">
+          Gallery <span class="nav-caret" aria-hidden="true"></span>
+        </button>
+        <ul class="nav-dropdown" role="list">
+          <li><a href="gallery.html">Photo Gallery</a></li>
+          <li><a href="gallery.html?cat=campus">Campus</a></li>
+          <li><a href="gallery.html?cat=events">Events</a></li>
+          <li><a href="gallery.html?cat=bilingual">Bilingual Activities</a></li>
+          <li><a href="gallery-album.html">Albums</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">
+          Visit <span class="nav-caret" aria-hidden="true"></span>
+        </button>
+        <ul class="nav-dropdown" role="list">
+          <li><a href="visit.html">Getting Here</a></li>
+          <li><a href="visit.html#transport">Transport Options</a></li>
+          <li><a href="visit.html#nearby">Nearby Landmarks</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </li>
+
+    </ul>
+
+    <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener" class="navbar__lang">TW Chinese</a>
+
+    <button class="navbar__toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="navbar__mobile" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="curriculum.html">Curriculum</a>
+    <a href="teachers.html">Bilingual Teachers</a>
+    <a href="news.html">News</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="visit.html">Visit Us</a>
+    <a href="contact.html">Contact</a>
+    <div class="navbar__mobile-lang">
+      <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener">View Chinese Website</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
 
   <main id="main">

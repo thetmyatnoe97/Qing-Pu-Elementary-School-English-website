@@ -14,45 +14,120 @@
 
   <a class="skip-link" href="#main">Skip to main content</a>
 
-  <!-- ── NAVBAR ── -->
-  <nav class="navbar" aria-label="Main navigation">
-    <div class="container navbar__inner">
-      <a href="index.html" class="navbar__logo" aria-label="Qing Pu Elementary School — home">
-        <div class="navbar__logo-img" aria-hidden="true"><img src="images/History/logo.png" alt=""></div>
-        <div class="navbar__logo-text">
-          <span class="navbar__name">Qing Pu Elementary School</span>
-          <span class="navbar__sub">青埔國小 · Taoyuan, Taiwan</span>
-        </div>
-      </a>
-      <ul class="navbar__links" role="list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="bilingual.html">Bilingual</a></li>
-        <li><a href="teachers.html">Teachers</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="visit.html">Visit</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener" class="navbar__lang">🇹🇼 中文</a>
-      <button class="navbar__toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-    <div class="navbar__mobile" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="bilingual.html">Bilingual education</a>
-      <a href="teachers.html">Bilingual teachers</a>
-      <a href="news.html">News</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="visit.html">Visit us</a>
-      <a href="contact.html">Contact</a>
-      <div class="navbar__mobile-lang">
-        <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener">🇹🇼 View Chinese website →</a>
+<!-- ── NAVBAR ── -->
+<nav class="navbar" aria-label="Main navigation">
+  <div class="container navbar__inner">
+
+    <a href="index.html" class="navbar__logo" aria-label="Qing Pu Elementary School — home">
+      <div class="navbar__logo-img" aria-hidden="true"><img src="images/History/logo.png" alt=""></div>
+      <div class="navbar__logo-text">
+        <span class="navbar__name">Qing Pu Elementary School</span>
+        <span class="navbar__sub">青埔國小 · Taoyuan, Taiwan</span>
       </div>
+    </a>
+
+    <!-- Desktop nav with dropdowns — ALL items -->
+    <ul class="navbar__links" role="list">
+
+      <li class="has-dropdown">
+        <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">
+          Home <span class="nav-caret" aria-hidden="true"></span>
+        </button>
+        <ul class="nav-dropdown" role="list">
+          <li><a href="index.html">Home Page</a></li>
+          <li><a href="index.html#honours-heading">Honours Board</a></li>
+          <li><a href="index.html#news-heading">Latest News</a></li>
+          <li><a href="index.html#calendar-heading">School Calendar</a></li>
+          <li><a href="index.html#bilingual-heading">Bilingual Overview</a></li>
+          <li><a href="index.html#nearby-heading">Our Neighbourhood</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">
+          About <span class="nav-caret" aria-hidden="true"></span>
+        </button>
+        <ul class="nav-dropdown" role="list">
+          <li><a href="about.html">School Overview</a></li>
+          <li><a href="about.html#history">History &amp; Milestones</a></li>
+          <li><a href="about.html#vision">Vision &amp; Values</a></li>
+          <li><a href="about.html#student-life">Student Life</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">
+          Bilingual <span class="nav-caret" aria-hidden="true"></span>
+        </button>
+        <ul class="nav-dropdown" role="list">
+          <li><a href="curriculum.html">Programme Overview</a></li>
+          <li><a href="curriculum.html#curriculum">Curriculum by Grade</a></li>
+          <li><a href="curriculum.html#journal">English Journal</a></li>
+          <li><a href="teachers.html">Bilingual Teachers</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">
+          News <span class="nav-caret" aria-hidden="true"></span>
+        </button>
+        <ul class="nav-dropdown" role="list">
+          <li><a href="news.html">All News &amp; Events</a></li>
+          <li><a href="news.html?cat=event">Events</a></li>
+          <li><a href="news.html?cat=award">Awards</a></li>
+          <li><a href="news.html?cat=announcement">Announcements</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">
+          Gallery <span class="nav-caret" aria-hidden="true"></span>
+        </button>
+        <ul class="nav-dropdown" role="list">
+          <li><a href="gallery.html">Photo Gallery</a></li>
+          <li><a href="gallery.html?cat=campus">Campus</a></li>
+          <li><a href="gallery.html?cat=events">Events</a></li>
+          <li><a href="gallery.html?cat=bilingual">Bilingual Activities</a></li>
+          <li><a href="gallery-album.html">Albums</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">
+          Visit <span class="nav-caret" aria-hidden="true"></span>
+        </button>
+        <ul class="nav-dropdown" role="list">
+          <li><a href="visit.html">Getting Here</a></li>
+          <li><a href="visit.html#transport">Transport Options</a></li>
+          <li><a href="visit.html#nearby">Nearby Landmarks</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </li>
+
+    </ul>
+
+    <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener" class="navbar__lang">TW Chinese</a>
+
+    <button class="navbar__toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="navbar__mobile" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="curriculum.html">Curriculum</a>
+    <a href="teachers.html">Bilingual Teachers</a>
+    <a href="news.html">News</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="visit.html">Visit Us</a>
+    <a href="contact.html">Contact</a>
+    <div class="navbar__mobile-lang">
+      <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener">View Chinese Website</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
 
   <main id="main">
@@ -188,7 +263,6 @@
     <section class="section bg-white" aria-labelledby="transport-heading">
       <div class="container">
         <div class="section-header">
-          <p class="eyebrow">🚌 Getting here</p>
           <h2 id="transport-heading">Transport options</h2>
           <p>Qing Pu is one of the best-connected schools in Taoyuan — here is every way to reach us.</p>
         </div>
@@ -196,14 +270,13 @@
         <div class="transport-grid">
 
           <div class="transport-card fade-in transport-card--hsr">
-            <div class="transport-card__icon" aria-hidden="true">🚄</div>
-            <div class="transport-card__badge" style="background:var(--orange-light); color:var(--orange-dark);">5 min</div>
+            <div class="transport-card__badge" style="background:var(--orange-light); color:var(--orange-dark);">8 mins</div>
             <h3>THSR Taoyuan Station</h3>
             <p class="transport-card__zh">高鐵桃園站</p>
             <ol class="transport-steps">
               <li>Take the Taiwan High Speed Rail to <strong>Taoyuan Station</strong></li>
               <li>Exit the station and board a <strong>free shuttle bus</strong> or taxi</li>
-              <li>Arrive at the school gate in approximately <strong>5 minutes</strong></li>
+              <li>Arrive at the school gate in approximately <strong>8 minutes walk</strong></li>
             </ol>
             <p class="transport-card__note">
               The THSR connects Taoyuan to Taipei Main Station in 20 minutes and to Zuoying (Kaohsiung) in 75 minutes.
@@ -211,14 +284,13 @@
           </div>
 
           <div class="transport-card fade-in transport-card--mrt">
-            <div class="transport-card__icon" aria-hidden="true">🚇</div>
-            <div class="transport-card__badge" style="background:var(--purple-light); color:#4840a8;">10 min walk</div>
+            <div class="transport-card__badge" style="background:var(--purple-light); color:#4840a8;">11 mins</div>
             <h3>Airport MRT — Station A18</h3>
             <p class="transport-card__zh">機場捷運 A18 高鐵桃園站</p>
             <ol class="transport-steps">
               <li>Board the <strong>Taoyuan Airport MRT</strong> (purple line)</li>
               <li>Alight at <strong>A18 — HSR Taoyuan Station</strong></li>
-              <li>Walk approximately <strong>10 minutes</strong> northeast to the school</li>
+              <li>Walk approximately <strong>11 minutes</strong> northeast to the school</li>
             </ol>
             <p class="transport-card__note">
               Direct connection to Taoyuan International Airport (A13) — ideal for international visitors arriving by air.
@@ -226,13 +298,13 @@
           </div>
 
           <div class="transport-card fade-in transport-card--bus">
-            <div class="transport-card__icon" aria-hidden="true">🚌</div>
-            <div class="transport-card__badge" style="background:var(--green-light); color:#1a6b4f;">At the gate</div>
+            <div class="transport-card__icon" aria-hidden="true"></div>
+            <div class="transport-card__badge" style="background:var(--green-light); color:#1a6b4f;">At the school gate</div>
             <h3>Bus routes</h3>
             <p class="transport-card__zh">公車路線</p>
             <ul class="transport-steps">
-              <li>Route <strong>5087</strong> — (Zhongli ⇄ Dayuan) — MAIN ROUTE (3 mins walk)</li>
-              <li>Route <strong>170</strong> — (Zhongli ⇄ THSR) — MAIN ROUTE (2 mins walk)</li>
+              <li>Route <strong>5087</strong> — (Zhongli ⇄ Dayuan) — MAIN ROUTE ( 3 mins walk )</li>
+              <li>Route <strong>170</strong> — (Zhongli ⇄ THSR) — MAIN ROUTE ( 2 mins walk )</li>
             </ul>
             <p class="transport-card__note">
               Check <a href="https://ebus.tycg.gov.tw" target="_blank" rel="noopener">Taoyuan e-Bus</a> for current timetables and real-time arrival information.
@@ -240,7 +312,7 @@
           </div>
 
           <div class="transport-card fade-in transport-card--car">
-            <div class="transport-card__icon" aria-hidden="true">🚗</div>
+            <div class="transport-card__icon" aria-hidden="true"></div>
             <div class="transport-card__badge" style="background:var(--navy-light); color:var(--navy);">Parking available</div>
             <h3>By car</h3>
             <p class="transport-card__zh">開車前往</p>
@@ -261,7 +333,7 @@
     <section class="section" aria-labelledby="nearby-heading">
       <div class="container">
         <div class="section-header centered">
-          <p class="eyebrow">🗺 Neighbourhood</p>
+          <p class="eyebrow">Neighbourhood</p>
           <h2 id="nearby-heading">What's nearby</h2>
           <p>Qing Pu sits at the heart of Taoyuan's newest district — surrounded by cultural and transport landmarks.</p>
         </div>
@@ -269,10 +341,10 @@
         <div class="nearby-list">
 
           <div class="nearby-row fade-in">
-            <div class="nearby-row__icon" style="background:var(--green-light);" aria-hidden="true">🎨</div>
+            <div class="nearby-row__icon" style="background:var(--green-light);" aria-hidden="true"><img src="images/Neighborhood/museum.jpg" alt=""></div>
             <div class="nearby-row__info">
-              <h4>Taoyuan Museum of Art</h4>
-              <p class="text-sm text-muted">桃園市立美術館 · 5 min walk</p>
+              <h4>Taoyuan Museum of Fine Arts</h4>
+              <p class="text-sm text-muted">5 mins walk</p>
             </div>
             <p class="nearby-row__desc">
               A striking contemporary art museum opened in 2021. Grade 4 students visit
@@ -282,10 +354,10 @@
           </div>
 
           <div class="nearby-row fade-in">
-            <div class="nearby-row__icon" style="background:var(--orange-light);" aria-hidden="true">🏟</div>
+            <div class="nearby-row__icon" style="background:var(--orange-light);" aria-hidden="true"><img src="images/Neighborhood/baseball stadium.jpg" alt=""></div>
             <div class="nearby-row__info">
               <h4>Taoyuan International Baseball Stadium</h4>
-              <p class="text-sm text-muted">桃園國際棒球場 · 10 min walk</p>
+              <p class="text-sm text-muted">10 mins walk</p>
             </div>
             <p class="nearby-row__desc">
               Home to the Rakuten Monkeys (CPL). The stadium is visible from the school
@@ -295,10 +367,10 @@
           </div>
 
           <div class="nearby-row fade-in">
-            <div class="nearby-row__icon" style="background:var(--navy-light);" aria-hidden="true">✍️</div>
+            <div class="nearby-row__icon" style="background:var(--navy-light);" aria-hidden="true"><img src="images/Neighborhood/calligraphy art center.jpg" alt=""></div>
             <div class="nearby-row__info">
-              <h4>Taoyuan Calligraphy Greenway</h4>
-              <p class="text-sm text-muted">桃園書法藝術園區 · 8 min walk</p>
+              <h4>Hengshan Calligraphy Art Center and Park</h4>
+              <p class="text-sm text-muted">8 mins walk</p>
             </div>
             <p class="nearby-row__desc">
               An outdoor cultural park celebrating Chinese calligraphy and art.
@@ -308,10 +380,10 @@
           </div>
 
           <div class="nearby-row fade-in">
-            <div class="nearby-row__icon" style="background:var(--purple-light);" aria-hidden="true">✈️</div>
+            <div class="nearby-row__icon" style="background:var(--purple-light);" aria-hidden="true"><img src="images/Neighborhood/airport.jpg" alt=""></div>
             <div class="nearby-row__info">
               <h4>Taoyuan International Airport</h4>
-              <p class="text-sm text-muted">桃園國際機場 · 20 min (Airport MRT)</p>
+              <p class="text-sm text-muted">20 mins (Airport MRT)</p>
             </div>
             <p class="nearby-row__desc">
               Taiwan's main international gateway — 20 minutes via Airport MRT from
@@ -321,10 +393,10 @@
           </div>
 
           <div class="nearby-row fade-in">
-            <div class="nearby-row__icon" style="background:var(--orange-light);" aria-hidden="true">🛍️</div>
+            <div class="nearby-row__icon" style="background:var(--orange-light);" aria-hidden="true"><img src="images/Neighborhood/gloria.jpg" alt=""></div>
             <div class="nearby-row__info">
               <h4>Gloria Outlet</h4>
-              <p class="text-sm text-muted">Gloria Outlets · 10 min</p>
+              <p class="text-sm text-muted">10 journal-mini-card__desc</p>
             </div>
             <p class="nearby-row__desc">
               One of Taiwan's largest outlet malls, with international brands, dining,
@@ -334,10 +406,10 @@
           </div>
 
           <div class="nearby-row fade-in">
-            <div class="nearby-row__icon" style="background:var(--navy-light);" aria-hidden="true">🪑</div>
+            <div class="nearby-row__icon" style="background:var(--navy-light);" aria-hidden="true"><img src="images/Neighborhood/IKEA.jpeg" alt=""></div>
             <div class="nearby-row__info">
               <h4>IKEA Taoyuan</h4>
-              <p class="text-sm text-muted">IKEA 桃園 · 10 min</p>
+              <p class="text-sm text-muted">10 mins</p>
             </div>
             <p class="nearby-row__desc">
               A full-size IKEA store in the Qingpu district — one of the largest in
@@ -347,10 +419,10 @@
           </div>
 
           <div class="nearby-row fade-in">
-            <div class="nearby-row__icon" style="background:var(--purple-light);" aria-hidden="true">🐠</div>
+            <div class="nearby-row__icon" style="background:var(--purple-light);" aria-hidden="true"><img src="images/Neighborhood/xpark.jpg" alt=""></div>
             <div class="nearby-row__info">
               <h4>Xpark Aquarium</h4>
-              <p class="text-sm text-muted">Xpark · 15 min</p>
+              <p class="text-sm text-muted">15 mins</p>
             </div>
             <p class="nearby-row__desc">
               A premium aquarium with marine life exhibits, interactive zones, and
@@ -360,7 +432,7 @@
           </div>
 
           <div class="nearby-row fade-in">
-            <div class="nearby-row__icon" style="background:var(--green-light);" aria-hidden="true">🌳</div>
+            <div class="nearby-row__icon" style="background:var(--green-light);" aria-hidden="true"><img src="images/Neighborhood/park.webp" alt=""></div>
             <div class="nearby-row__info">
               <h4>Parks &amp; green spaces</h4>
               <p class="text-sm text-muted">青埔公園 &amp; surrounding area</p>
