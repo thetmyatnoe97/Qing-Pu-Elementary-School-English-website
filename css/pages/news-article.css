@@ -1,0 +1,198 @@
+/* ============================================================
+   Qing Pu Elementary School — English Website
+   news-article.css  |  Page-specific styles for news-article.html
+   Note: page-hero, breadcrumb come from about.css
+         news-sidebar, sidebar-widget, recent-item come from news.css
+   ============================================================ */
+
+
+/* ── ARTICLE HERO META ROW ── */
+.article-hero__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    margin-bottom: var(--sp-4);
+    font-size: 17px;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+  }
+  
+  .article-hero__meta time {
+    font-weight: 500;
+  }
+  
+  .article-hero__dot {
+    opacity: 0.5;
+  }
+  
+  .article-hero__sub {
+    font-size: 18px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 640px;
+  }
+  
+  /* Article hero titles can run longer than other pages */
+  .article-hero .page-hero__title {
+    font-size: clamp(24px, 4vw, 36px);
+    max-width: 760px;
+  }
+  
+  
+  /* ── TWO-COLUMN ARTICLE LAYOUT ── */
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: var(--sp-7);
+    align-items: start;
+  }
+  
+  
+  /* ── ARTICLE HERO IMAGE (placeholder) ── */
+  .article-hero-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--navy-light);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 64px;
+    margin-bottom: var(--sp-6);
+    overflow: hidden;
+  }
+  
+  .article-hero-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  
+  /* ── ARTICLE BODY TYPOGRAPHY ── */
+  .article-content {
+    font-size: 18px;
+    line-height: 1.85;
+    color: var(--text);
+    max-width: 680px;
+  }
+  
+  .article-content p {
+    color: var(--text);
+    margin-bottom: var(--sp-5);
+  }
+  
+  .article-content p:first-of-type {
+    font-size: 18px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  
+  .article-content p:last-child {
+    margin-bottom: 0;
+  }
+  
+  
+  /* ── TAGS ── */
+  .article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2);
+    margin-top: var(--sp-6);
+    padding-top: var(--sp-5);
+    border-top: 1px solid var(--border);
+    max-width: 680px;
+  }
+  
+  
+  /* ── ACTIONS ROW ── */
+  .article-actions {
+    margin-top: var(--sp-6);
+  }
+  
+  
+  /* ── PREV / NEXT PAGER ── */
+  .article-pager {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-4);
+    margin-top: var(--sp-7);
+    max-width: 680px;
+  }
+  
+  .article-pager__link {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+    padding: var(--sp-4) var(--sp-5);
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    transition: box-shadow var(--t-fast), border-color var(--t-fast), transform var(--t-fast);
+    text-decoration: none;
+  }
+  
+  .article-pager__link:hover {
+    box-shadow: var(--shadow-sm);
+    border-color: var(--navy);
+    transform: translateY(-2px);
+  }
+  
+  .article-pager__link--next {
+    text-align: right;
+    align-items: flex-end;
+  }
+  
+  .article-pager__label {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-light);
+  }
+  
+  .article-pager__title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.4;
+  }
+  
+  /* If only one of prev/next exists, let it still look balanced */
+  .article-pager:has(.article-pager__link--prev[hidden]) {
+    grid-template-columns: 1fr;
+  }
+  
+  .article-pager:has(.article-pager__link--next[hidden]) {
+    grid-template-columns: 1fr;
+  }
+  
+  
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  @media (max-width: 1024px) {
+    .article-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .article-hero-img {
+      aspect-ratio: 4/3;
+      font-size: 48px;
+    }
+  
+    .article-pager {
+      grid-template-columns: 1fr;
+    }
+  
+    .article-pager__link--next {
+      text-align: left;
+      align-items: flex-start;
+    }
+  
+    .article-content p:first-of-type {
+      font-size: 18px;
+    }
+  }

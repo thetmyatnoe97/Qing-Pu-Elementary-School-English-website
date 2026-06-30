@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Album — Qing Pu Elementary School Gallery</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages/about.css">
+  <link rel="stylesheet" href="css/pages/gallery.css">
+  <link rel="stylesheet" href="css/playful-theme.css">
+  <style>
+    /* ── Album viewer page ── */
+    .album-header {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-4);
+      margin-bottom: var(--sp-6);
+      flex-wrap: wrap;
+    }
+    .album-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      text-decoration: none;
+      background: var(--navy-light);
+      padding: 8px 16px;
+      border-radius: 50px;
+      transition: background 0.15s, transform 0.15s;
+      flex-shrink: 0;
+    }
+    .album-back:hover { background: var(--sky-light); transform: translateX(-3px); }
+
+    .album-title-block { flex: 1; }
+    .album-title-block h1 { font-size: clamp(24px, 4vw, 36px); margin-bottom: 4px; }
+    .album-title-block p  { font-size: 15px; color: var(--text-muted); margin: 0; }
+
+    /* ── Photo grid ── */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--sp-4);
+      margin-bottom: var(--sp-8);
+    }
+
+    .photo-thumb {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      position: relative;
+      background: var(--navy-light);
+      border: 2.5px solid var(--border);
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease, border-color 0.2s;
+    }
+    .photo-thumb:hover {
+      transform: scale(1.04) rotate(-0.5deg);
+      box-shadow: 0 8px 24px rgba(91,111,206,0.20);
+      border-color: var(--sky);
+    }
+    .photo-thumb img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .photo-thumb__placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: var(--sp-2);
+    }
+    .photo-thumb__placeholder span { font-size: 44px; line-height: 1; }
+    .photo-thumb__placeholder p { font-size: 13px; color: var(--text-muted); text-align: center; margin: 0; }
+    .photo-thumb__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(30,50,100,0.70) 0%, transparent 55%);
+      opacity: 0; transition: opacity 0.2s;
+      display: flex; align-items: flex-end;
+      padding: var(--sp-3);
+    }
+    .photo-thumb:hover .photo-thumb__overlay { opacity: 1; }
+    .photo-thumb__caption { font-size: 13px; font-weight: 600; color: #fff; line-height: 1.4; }
+
+    /* ── Lightbox viewer ── */
+    .viewer {
+      position: fixed; inset: 0; z-index: 300;
+      background: rgba(8,18,40,0.96);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+    }
+    .viewer[hidden] { display: none; }
+
+    .viewer__close {
+      position: absolute; top: var(--sp-5); right: var(--sp-5);
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,0.12); border: 1.5px solid rgba(255,255,255,0.22);
+      color: #fff; font-size: 20px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .viewer__close:hover { background: rgba(255,255,255,0.25); transform: scale(1.1) rotate(90deg); }
+
+    .viewer__image-area {
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      width: 100%; max-height: 75vh;
+      padding: 0 80px;
+      box-sizing: border-box;
+    }
+
+    .viewer__img {
+      max-width: 100%; max-height: 75vh;
+      border-radius: var(--radius-lg);
+      object-fit: contain;
+      box-shadow: 0 16px 60px rgba(0,0,0,0.7);
+      display: block;
+      animation: photoIn 0.28s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+
+    @keyframes photoIn {
+      from { opacity: 0; transform: scale(0.92); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    .viewer__placeholder {
+      width: 360px; max-width: 80vw; height: 260px;
+      background: rgba(255,255,255,0.06);
+      border: 2px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-lg);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: var(--sp-3);
+    }
+    .viewer__placeholder-emoji { font-size: 72px; }
+    .viewer__placeholder p { font-size: 16px; color: rgba(255,255,255,0.55); margin: 0; }
+
+    /* Prev / Next buttons */
+    .viewer__nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(255,255,255,0.12); border: 1.5px solid rgba(255,255,255,0.20);
+      color: #fff; font-size: 26px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s, transform 0.15s;
+      font-family: inherit;
+    }
+    .viewer__nav:hover { background: rgba(255,255,255,0.25); }
+    .viewer__nav--prev { left: 16px; }
+    .viewer__nav--next { right: 16px; }
+    .viewer__nav:active { transform: translateY(-50%) scale(0.9); }
+    .viewer__nav:disabled { opacity: 0.25; cursor: not-allowed; }
+
+    /* Caption + counter */
+    .viewer__caption {
+      margin-top: var(--sp-4);
+      text-align: center;
+      color: rgba(255,255,255,0.80);
+      font-size: 16px;
+      max-width: 600px;
+      padding: 0 var(--sp-5);
+      line-height: 1.5;
+    }
+    .viewer__counter {
+      margin-top: var(--sp-2);
+      font-size: 14px;
+      color: rgba(255,255,255,0.40);
+    }
+
+    /* Keyboard hint */
+    .viewer__hint {
+      position: absolute; bottom: var(--sp-5); left: 50%; transform: translateX(-50%);
+      font-size: 13px; color: rgba(255,255,255,0.28);
+    }
+
+    /* Dot strip */
+    .viewer__dots {
+      display: flex; gap: 6px; margin-top: var(--sp-3); flex-wrap: wrap; justify-content: center;
+      max-width: 400px;
+    }
+    .viewer__dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+      cursor: pointer; border: none; padding: 0;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .viewer__dot.active { background: #fff; transform: scale(1.3); }
+
+    /* Empty state */
+    .album-empty {
+      text-align: center; padding: var(--sp-9);
+      background: var(--bg-white);
+      border: 2px dashed var(--border);
+      border-radius: var(--radius-xl);
+    }
+    .album-empty h2 { color: var(--navy); margin-bottom: var(--sp-3); }
+    .album-empty p  { color: var(--text-muted); margin-bottom: var(--sp-5); }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="container navbar__inner">
+      <a href="index.html" class="navbar__logo" aria-label="Qing Pu Elementary School — home">
+        <div class="navbar__logo-img" aria-hidden="true"><img src="images/History/logo.png" alt=""></div>
+        <div class="navbar__logo-text">
+          <span class="navbar__name">Qing Pu Elementary School</span>
+          <span class="navbar__sub">青埔國小 · Taoyuan, Taiwan</span>
+        </div>
+      </a>
+      <ul class="navbar__links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="bilingual.html">Bilingual</a></li>
+        <li><a href="teachers.html">Teachers</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="visit.html">Visit</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener" class="navbar__lang">🇹🇼 中文</a>
+      <button class="navbar__toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="navbar__mobile" id="mobile-menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="bilingual.html">Bilingual education</a>
+      <a href="teachers.html">Bilingual teachers</a>
+      <a href="news.html">News</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="visit.html">Visit us</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="section">
+      <div class="container">
+
+        <!-- Back + title -->
+        <div class="album-header">
+          <a href="gallery.html" class="album-back">← Back to Gallery</a>
+          <div class="album-title-block">
+            <h1 id="album-title">Loading album…</h1>
+            <p id="album-meta"></p>
+          </div>
+        </div>
+
+        <!-- Photo grid (thumbnails) -->
+        <div class="photo-grid" id="photo-grid"></div>
+
+        <!-- Empty state -->
+        <div class="album-empty" id="album-empty" hidden>
+          <div style="font-size:56px;margin-bottom:16px">📷</div>
+          <h2>Album not found</h2>
+          <p>This album doesn't exist yet, or photos haven't been added.</p>
+          <a href="gallery.html" class="btn btn-primary">Back to Gallery</a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ── LIGHTBOX VIEWER ── -->
+  <div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button class="viewer__close" id="viewer-close" aria-label="Close viewer">✕</button>
+
+    <div class="viewer__image-area">
+      <button class="viewer__nav viewer__nav--prev" id="viewer-prev" aria-label="Previous photo">‹</button>
+      <div id="viewer-img-wrap"></div>
+      <button class="viewer__nav viewer__nav--next" id="viewer-next" aria-label="Next photo">›</button>
+    </div>
+
+    <div class="viewer__caption" id="viewer-caption"></div>
+    <div class="viewer__counter" id="viewer-counter"></div>
+    <div class="viewer__dots"   id="viewer-dots"></div>
+    <div class="viewer__hint">← → arrow keys to navigate · Esc to close</div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <div class="footer__logo-box" aria-hidden="true"><img src="images/History/logo.png" alt=""></div>
+            <div>
+              <div class="footer__school-name">Qing Pu Elementary School</div>
+              <div class="footer__school-zh">桃園市中壢區青埔國民小學</div>
+            </div>
+          </div>
+          <p class="footer__desc">A bilingual elementary school in Taoyuan, Taiwan.</p>
+        </div>
+        <div>
+          <p class="footer__col-title">Pages</p>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="gallery.html">Photo gallery</a></li>
+            <li><a href="news.html">News &amp; events</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">More</p>
+          <ul class="footer__links">
+            <li><a href="visit.html">Visit us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Contact</p>
+          <div class="footer__contact-item"><span class="footer__contact-icon">📍</span><span>No. 122, Section 2, Qingpu Road, Zhongli District, Taoyuan City</span></div>
+          <div class="footer__contact-item"><span class="footer__contact-icon">✉️</span><span>cfc224@gmail.com</span></div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2026 Qing Pu Elementary School · Taoyuan, Taiwan · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+  /* ============================================================
+     ALBUM DATA
+     Add real image paths to the `photos` arrays when available.
+     Each photo: { src, caption, emoji (fallback if no real img) }
+     ============================================================ */
+  const ALBUMS = {
+    'campus-old': {
+      title: 'Old Building',
+      category: 'Campus',
+      date: 'Before 2018',
+      photos: [
+        { src: 'images/History/old1.JPG', caption: '' },
+        { src: 'images/History/old2.JPG', caption: '' },
+        { src: 'images/History/old3.JPG', caption: '' },
+      ]
+    },
+    'campus-construction': {
+      title: 'Construction',
+      category: 'Campus',
+      date: '2016–2018',
+      photos: [
+        { src: 'images/History/con4.JPG', caption: '' },
+        { src: 'images/History/con5.JPG', caption: '' },
+        { src: 'images/History/con2.jpg', caption: '' },
+        { src: 'images/History/con3.JPG', caption: '' },
+        { src: 'images/History/con9.JPG', caption: '' },
+        { src: 'images/History/con6.jpeg', caption: '' },
+        { src: 'images/History/con7.jpeg', caption: '' },
+        { src: 'images/History/con8.jpeg', caption: '' },
+      ]
+    },
+    'campus-new': {
+      title: 'New Building',
+      category: 'Campus',
+      date: '2018–Present',
+      photos: [
+        { src: 'images/History/new1.JPG', caption: '' },
+        { src: 'images/History/new2.JPG', caption: '' },
+        { src: 'images/History/new3.JPG', caption: '' },
+        { src: 'images/History/new4.JPG', caption: '' },
+        { src: 'images/History/new5.JPG', caption: '' },
+      ]
+    },
+    'campus-library': {
+      title: 'Library',
+      category: 'Campus',
+      date: '',
+      photos: [
+        { src: 'images/Campus/library1.jpg', caption: '' }, 
+        { src: 'images/Campus/library2.jpg', caption: '' },
+        { src: 'images/Campus/library3.jpg', caption: '' },
+        { src: 'images/Campus/library4.jpg', caption: '' },
+        { src: 'images/Campus/library5.jpg', caption: '' },
+        { src: 'images/Campus/library6.jpg', caption: '' },
+        { src: 'images/Campus/library7.jpg', caption: '' },
+        { src: 'images/Campus/library8.JPG', caption: '' },
+        { src: 'images/Campus/library9.JPG', caption: '' },
+        { src: 'images/Campus/library10.JPG', caption: '' },
+        { src: 'images/Campus/library11.JPG', caption: '' },
+      ]
+    },
+    'bilingual-baking': {
+      title: 'Science Lessons',
+      category: 'Bilingual',
+      date: '2025',
+      photos: [
+        { src: 'images/2025baking/baking1.jpg', caption: ''},
+        { src: 'images/2025baking/baking2.jpg', caption: ''},
+        { src: 'images/2025baking/baking3.jpg', caption: ''},
+        { src: 'images/2025baking/baking4.jpg', caption: ''},
+        { src: 'images/2025baking/baking5.jpg', caption: ''},
+        { src: 'images/2025baking/baking6.jpg', caption: ''},
+        { src: 'images/2025baking/baking7.jpg', caption: ''},
+        { src: 'images/2025baking/baking8.jpg', caption: ''},
+        { src: 'images/2025baking/baking9.jpg', caption: ''},
+        { src: 'images/2025baking/baking10.jpg', caption: ''},
+        { src: 'images/2025baking/baking11.jpg', caption: ''},
+        { src: 'images/2025baking/baking12.jpg', caption: ''},
+        { src: 'images/2025baking/baking13.jpg', caption: ''},
+        { src: 'images/2025baking/baking14.jpg', caption: ''},
+      ]
+    },
+    'bilingual-penpal': {
+      title: 'Pen pal',
+      category: 'Bilingual',
+      date: '2026',
+      photos: [
+        { src: 'images/2026IE/penpal1.jpeg', caption: '' },
+        { src: 'images/2026IE/penpal2.jpg', caption: '' },
+        { src: 'images/2026IE/penpal3.jpg', caption: '' },
+        { src: 'images/2026IE/penpal4.jpeg', caption: '' },
+        { src: 'images/2026IE/penpal5.jpeg', caption: '' },
+        { src: 'images/2026IE/penpal6.jpeg', caption: '' },
+        { src: 'images/2026IE/penpal7.jpeg', caption: '' },
+      ]
+    },
+    'events-halloween': {
+      title: 'Halloween 2025',
+      category: 'Events',
+      date: 'October 2025',
+      photos: [
+        { src: 'images/2025halloween/halloween7.JPG', caption: 'Students in costume parade', emoji: '🎃' },
+        { src: 'images/2025halloween/halloween1.JPG', caption: 'Students in costume parade', emoji: '🎃' },
+        { src: 'images/2025halloween/halloween2.JPG', caption: 'Students in costume parade', emoji: '🎃' },
+        { src: 'images/2025halloween/halloween5.JPG', caption: 'Students in costume parade', emoji: '🎃' },
+        { src: 'images/2025halloween/halloween8.JPG', caption: 'Students in costume parade', emoji: '🎃' },
+        { src: 'images/2025halloween/halloween9.JPG', caption: 'Students in costume parade', emoji: '🎃' },
+        { src: 'images/2025halloween/halloween10.JPG', caption: 'Students in costume parade', emoji: '🎃' },
+        { src: 'images/2025halloween/halloween11.JPG', caption: 'Students in costume parade', emoji: '🎃' },
+        { src: 'images/2025halloween/halloween12.JPG', caption: 'Students in costume parade', emoji: '🎃' },
+        { src: 'images/2025halloween/halloween6.JPG', caption: 'Teachers in costume parade', emoji: '🎃' },
+        { src: 'images/2025halloween/halloween3.JPG', caption: 'Halloween games', emoji: '🎃' },
+        { src: 'images/2025halloween/halloween4.JPG', caption: 'Halloween games', emoji: '🎃' },
+      ]
+    },
+    'events-parentday': {
+      title: 'Parent Day 2025',
+      category: 'Events',
+      date: '2025',
+      photos: [
+        { src: 'images/Parent day/parentday1.JPG', caption: '' },
+        { src: 'images/Parent day/parentday2.jpeg', caption: '' },
+        { src: 'images/Parent day/parentday3.JPG', caption: '' },
+        { src: 'images/Parent day/parentday4.JPG', caption: '' },
+        { src: 'images/Parent day/parentday5.JPG', caption: '' },
+        { src: 'images/Parent day/parentday6.JPG', caption: '' },
+        { src: 'images/Parent day/parentday7.JPG', caption: '' },
+        { src: 'images/Parent day/parentday8.Jpg', caption: '' },
+        { src: 'images/Parent day/parentday9.Jpg', caption: '' },
+       { src: 'images/Parent day/parentday1.JPG', caption: '' },
+      ]
+    },
+    'events-christmas': {
+      title: 'Christmas 2025',
+      category: 'Events',
+      date: 'December 2025',
+      photos: [
+        { src: 'images/2025christmas/christmas7.jpeg', caption: '2025 Christmas performance on stage', emoji: '🎄' },
+        { src: 'images/2025christmas/christmas3.jpeg', caption: 'Christmas decorations', emoji: '⭐' },
+        { src: 'images/2025christmas/christmas8.jpeg', caption: 'Christmas photo booth', emoji: '⭐' },
+        { src: 'images/2025christmas/christmas5.jpeg', caption: 'Santa visit — Surprise gift activity', emoji: '🎅' },
+        { src: 'images/2025christmas/christmas6.jpeg', caption: 'Santa visit — Surprise gift activity', emoji: '🎅' },
+        { src: 'images/2025christmas/christmas9.jpeg', caption: 'Santa visit — Christmas activity', emoji: '🎅' },
+        { src: 'images/2025christmas/christmas10.jpeg', caption: 'Santa visit — Christmas activity', emoji: '🎅' },
+        { src: 'images/2025christmas/christmas11.jpeg', caption: 'Santa visit — Christmas activity', emoji: '🎅' },
+        { src: 'images/2025christmas/christmas12.jpeg', caption: 'Santa visit — Christmas activity', emoji: '🎅' },
+        { src: 'images/2025christmas/christmas13.jpeg', caption: 'Santa visit — Christmas activity', emoji: '🎅' },
+        { src: 'images/2025christmas/christmas1.jpg', caption: 'Santa visit', emoji: '🎅' },
+        { src: 'images/2025christmas/christmas2.jpg', caption: 'Santa visit', emoji: '🎅' },
+      ]
+    },
+    'events-openclass': {
+      title: 'Open Class 2025',
+      category: 'Events',
+      date: '2025',
+      photos: [
+        { src: '', caption: '2025 雙語學校公開觀議課 — teachers observing bilingual lesson', emoji: '🌍' },
+        { src: '', caption: 'Post-lesson discussion among visiting educators', emoji: '💬' },
+        { src: '', caption: 'Students presenting group work in English', emoji: '📋' },
+        { src: '', caption: 'Principal welcoming visiting school delegation', emoji: '🤝' },
+      ]
+    },
+    'events-exchange': {
+      title: 'International Exchange 2026',
+      category: 'Events',
+      date: '2026',
+      photos: [
+        { src: 'images/2026IE/exchange1.JPG', caption: 'Group photo at school entrance with exchange students' },
+        { src: 'images/2026IE/exchange2.JPG', caption: 'Joint class activity with visiting American students' },
+        { src: 'images/2026IE/exchange3.JPG', caption: 'Group photo at classroom' },
+        { src: 'images/2026IE/exchange4.JPG', caption: '2026 International Exchange— welcome ceremony' },
+        { src: 'images/2026IE/exchange5.JPG', caption: '2026 International Exchange— sport activity' },
+        { src: 'images/2026IE/exchange6.JPG', caption: 'Group photo at gymnasium' },
+        { src: 'images/2026IE/exchange7.JPG', caption: '2026 International Exchange' },
+        { src: 'images/2026IE/exchange8.JPG', caption: '2026 International Exchange— group photo' },
+      ]
+    },
+    'events-graduation': {
+      title: 'Graduation Ceremony 2026',
+      category: 'Events',
+      date: 'June 2026',
+      photos: [
+        { src: 'images/2026graduation/graduation1.JPG', caption: 'Grade 6 graduation ceremony — Class of 2026'},
+        { src: 'images/2026graduation/graduation2.JPG', caption: 'Grade 6 graduation ceremony — Class of 2026'},
+        { src: 'images/2026graduation/graduation3.JPG', caption: 'Grade 6 graduation ceremony — Class of 2026'},
+        { src: 'images/2026graduation/graduation4.JPG', caption: 'Grade 6 graduation ceremony — Class of 2026'},
+        { src: 'images/2026graduation/graduation5.JPG', caption: 'Grade 6 graduation ceremony — Class of 2026'},
+        { src: 'images/2026graduation/graduation6.JPG', caption: 'Grade 6 graduation ceremony — Principal speech'},
+        { src: 'images/2026graduation/graduation7.JPG', caption: 'Grade 6 graduation ceremony — Class of 2026'},
+        { src: 'images/2026graduation/graduation8.JPG', caption: 'Grade 6 graduation ceremony'},
+        { src: 'images/2026graduation/graduation9.JPG', caption: 'Grade 6 graduation ceremony'},
+      ]
+    },
+    'sports-day': {
+      title: 'Sports Day',
+      category: 'Sports',
+      date: '2024',
+      photos: [
+        { src: 'images/PE/Sport day/sport1.JPG', caption: '' },
+        { src: 'images/PE/Sport day/sport2.JPG', caption: '' },
+        { src: 'images/PE/Sport day/sport3.JPG', caption: '' },
+        { src: 'images/PE/Sport day/sport4.JPG', caption: '' },
+        { src: 'images/PE/Sport day/sport5.JPG', caption: '' },
+        { src: 'images/PE/Sport day/sport6.JPG', caption: '' },
+        { src: 'images/PE/Sport day/sport7.JPG', caption: '' },
+        { src: 'images/PE/Sport day/sport8.JPG', caption: '' },
+      ]
+    },
+    'jump-rope': {
+      title: 'Sports Day',
+      category: 'Sports',
+      date: '2026',
+      photos: [
+        { src: 'images/PE/jump1.JPG', caption: '' },
+        { src: 'images/PE/jump2.JPG', caption: '' },
+        { src: 'images/PE/jump3.JPG', caption: '' },
+        { src: 'images/PE/jump4.jpeg', caption: '' },
+      ]
+    },
+    'sports-pe': {
+      title: 'PE',
+      category: 'Sports',
+      date: '2025–2026',
+      photos: [
+        { src: 'images/PE/pe1.JPG', caption: '' },
+        { src: 'images/PE/pe2.JPG', caption: '' },
+        { src: 'images/PE/pe3.jpg', caption: '' },
+        { src: 'images/PE/pe4.JPG', caption: '' },
+        { src: 'images/PE/pe5.JPG', caption: '' },
+        { src: 'images/PE/pe6.JPG', caption: '' },
+        { src: 'images/PE/pe7.JPG', caption: '' },
+        { src: 'images/PE/pe8.JPG', caption: '' },
+        { src: 'images/PE/pe9.JPG', caption: '' },
+      ]
+    },
+    'trip-mrt': {
+      title: 'Airport MRT Adventure',
+      category: 'Field trip',
+      date: '2026',
+      photos: [
+        { src: 'images/2026IE/mrt1.jpeg', caption: '' },
+        { src: 'images/2026IE/mrt2.jpeg', caption: '' },
+      ]
+    },
+    'trip-busstation': {
+      title: 'Bus Station Adventure',
+      category: 'Field trip',
+      date: '2026',
+      photos: [
+        { src: 'images/2026IE/bus1.jpeg', caption: '' },  
+      ] 
+    },
+    'trip-supermarket': {
+      title: 'Shopping Adventure',
+      category: 'Field trip',
+      date: '2026',
+      photos: [
+        { src: 'images/2026IE/shopping1.jpeg', caption: '' },
+        { src: 'images/2026IE/shopping1.jpeg', caption: '' },  
+      ] 
+    },
+  };
+
+  /* ── Init ── */
+  const params  = new URLSearchParams(location.search);
+  const albumId = params.get('album') || '';
+  const album   = ALBUMS[albumId];
+
+  const photoGrid  = document.getElementById('photo-grid');
+  const albumTitle = document.getElementById('album-title');
+  const albumMeta  = document.getElementById('album-meta');
+  const albumEmpty = document.getElementById('album-empty');
+  const viewer     = document.getElementById('viewer');
+  const viewerImgWrap = document.getElementById('viewer-img-wrap');
+  const viewerCaption = document.getElementById('viewer-caption');
+  const viewerCounter = document.getElementById('viewer-counter');
+  const viewerDots    = document.getElementById('viewer-dots');
+  const viewerPrev    = document.getElementById('viewer-prev');
+  const viewerNext    = document.getElementById('viewer-next');
+
+  let currentIndex = 0;
+  let photos = [];
+
+  if (!album) {
+    albumTitle.textContent = 'Album not found';
+    albumEmpty.hidden = false;
+  } else {
+    document.title = `${album.title} — Gallery — Qing Pu Elementary School`;
+    albumTitle.textContent = `${album.title}`;
+    albumMeta.textContent  = `${album.category} · ${album.date} · ${album.photos.length} photos`;
+    photos = album.photos;
+
+    // Build breadcrumb
+    const breadcrumb = document.querySelector('.breadcrumb');
+    if (breadcrumb) {
+      breadcrumb.innerHTML = `
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="gallery.html">Gallery</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">${album.title}</span>
+      `;
+    }
+
+    // Render thumbnails
+    photos.forEach((photo, i) => {
+      const thumb = document.createElement('div');
+      thumb.className = 'photo-thumb';
+      thumb.tabIndex = 0;
+      thumb.setAttribute('role', 'button');
+      thumb.setAttribute('aria-label', `Open photo ${i+1}: ${photo.caption}`);
+
+      if (photo.src) {
+        thumb.innerHTML = `
+          <img src="${photo.src}" alt="${photo.caption}" loading="lazy">
+          <div class="photo-thumb__overlay"><span class="photo-thumb__caption">${photo.caption}</span></div>
+        `;
+      } else {
+        thumb.innerHTML = `
+          <div class="photo-thumb__placeholder">
+            <span>${photo.emoji}</span>
+            <p>${photo.caption}</p>
+          </div>
+          <div class="photo-thumb__overlay"><span class="photo-thumb__caption">${photo.caption}</span></div>
+        `;
+      }
+
+      thumb.addEventListener('click', () => openViewer(i));
+      thumb.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openViewer(i); } });
+      photoGrid.appendChild(thumb);
+    });
+
+    // Build viewer dots
+    photos.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'viewer__dot';
+      dot.setAttribute('aria-label', `Go to photo ${i+1}`);
+      dot.addEventListener('click', () => goTo(i));
+      viewerDots.appendChild(dot);
+    });
+  }
+
+  /* ── Viewer logic ── */
+  function openViewer(index) {
+    currentIndex = index;
+    viewer.hidden = false;
+    document.body.style.overflow = 'hidden';
+    renderViewer();
+    viewer.focus();
+  }
+
+  function closeViewer() {
+    viewer.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  function goTo(index) {
+    currentIndex = Math.max(0, Math.min(index, photos.length - 1));
+    renderViewer();
+  }
+
+  function renderViewer() {
+    const photo = photos[currentIndex];
+
+    // Image or placeholder
+    if (photo.src) {
+      viewerImgWrap.innerHTML = `<img class="viewer__img" src="${photo.src}" alt="${photo.caption}">`;
+    } else {
+      viewerImgWrap.innerHTML = `
+        <div class="viewer__placeholder">
+          <div class="viewer__placeholder-emoji">${photo.emoji}</div>
+          <p>${photo.caption}</p>
+        </div>`;
+    }
+
+    viewerCaption.textContent = photo.caption;
+    viewerCounter.textContent = `${currentIndex + 1} / ${photos.length}`;
+
+    // Update dots
+    document.querySelectorAll('.viewer__dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentIndex);
+    });
+
+    // Update nav buttons
+    viewerPrev.disabled = currentIndex === 0;
+    viewerNext.disabled = currentIndex === photos.length - 1;
+  }
+
+  /* ── Events ── */
+  document.getElementById('viewer-close').addEventListener('click', closeViewer);
+  viewerPrev.addEventListener('click', () => goTo(currentIndex - 1));
+  viewerNext.addEventListener('click', () => goTo(currentIndex + 1));
+
+  // Click outside image to close
+  viewer.addEventListener('click', e => { if (e.target === viewer) closeViewer(); });
+
+  // Keyboard nav
+  document.addEventListener('keydown', e => {
+    if (viewer.hidden) return;
+    if (e.key === 'ArrowLeft')  goTo(currentIndex - 1);
+    if (e.key === 'ArrowRight') goTo(currentIndex + 1);
+    if (e.key === 'Escape')     closeViewer();
+  });
+
+  // Touch swipe support
+  let touchStartX = 0;
+  viewer.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  viewer.addEventListener('touchend',   e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) { dx < 0 ? goTo(currentIndex + 1) : goTo(currentIndex - 1); }
+  });
+  </script>
+
+</body>
+</html>

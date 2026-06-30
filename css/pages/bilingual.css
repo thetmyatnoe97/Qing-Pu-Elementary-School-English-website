@@ -1,0 +1,599 @@
+/* ============================================================
+   Qing Pu Elementary School — English Website
+   bilingual.css  |  Page-specific styles for bilingual.html
+   Note: page-hero, breadcrumb, cta-strip come from about.css
+   ============================================================ */
+
+
+/* ── POLICY BANNER ── */
+.policy-banner {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-5);
+    background: var(--navy-light);
+    border: 1px solid rgba(26,79,122,0.15);
+    border-left: 4px solid var(--navy);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-5) var(--sp-6);
+  }
+  
+  .policy-banner__flag {
+    font-size: 40px;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  
+  .policy-banner__text {
+    flex: 1;
+  }
+  
+  .policy-banner__title {
+    font-size: 18px;
+    color: var(--navy);
+    margin-bottom: var(--sp-2);
+  }
+  
+  .policy-banner__text p {
+    font-size: 18px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin: 0;
+  }
+  
+  .policy-banner__link {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  
+  
+  /* ── IN-PAGE SECTION NAV ── */
+  .section-nav {
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: var(--navbar-height);
+    z-index: 80;
+  }
+  
+  .section-nav__list {
+    display: flex;
+    gap: 0;
+    list-style: none;
+    overflow-x: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+  }
+  
+  .section-nav__list::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .section-nav__link {
+    display: block;
+    padding: 14px var(--sp-5);
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--text-muted);
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color var(--t-fast), border-color var(--t-fast);
+    text-decoration: none;
+  }
+  
+  .section-nav__link:hover {
+    color: var(--navy);
+    border-bottom-color: var(--border-dark);
+  }
+  
+  .section-nav__link.active {
+    color: var(--navy);
+    border-bottom-color: var(--orange);
+    font-weight: 600;
+  }
+  
+  
+  /* ── CURRICULUM TABLE ── */
+  .curriculum-table-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .curriculum-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 18px;
+    background: var(--bg-white);
+    min-width: 640px; /* forces scroll on small screens */
+  }
+  
+  /* Header row */
+  .curriculum-table thead tr {
+    background: var(--navy);
+  }
+  
+  .curriculum-table thead th {
+    padding: 14px var(--sp-4);
+    text-align: left;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #fff;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  
+  .curriculum-table thead th:last-child {
+    border-right: none;
+  }
+  
+  /* Body rows */
+  .curriculum-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background var(--t-fast);
+  }
+  
+  .curriculum-table tbody tr:last-child {
+    border-bottom: none;
+  }
+  
+  .curriculum-table tbody tr:hover {
+    background: var(--navy-light);
+  }
+  
+  /* Alternating band — every pair of rows (gr1+2, gr3+4, gr5+6) */
+  .curriculum-table__row--gr1,
+  .curriculum-table__row--gr2 { background: #ffffff; }
+  
+  .curriculum-table__row--gr3,
+  .curriculum-table__row--gr4 { background: var(--bg-white); }
+  
+  .curriculum-table__row--gr5,
+  .curriculum-table__row--gr6 { background: #ffffff; }
+  
+  .curriculum-table tbody td {
+    padding: 14px var(--sp-4);
+    vertical-align: top;
+    color: var(--text-muted);
+    border-right: 1px solid var(--border);
+    line-height: 1.6;
+  }
+  
+  .curriculum-table tbody td:last-child {
+    border-right: none;
+    text-align: center;
+    font-weight: 600;
+    color: var(--navy);
+    vertical-align: middle;
+  }
+  
+  /* Grade pill badges inside the table */
+  .grade-pill {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  
+  .grade-pill--orange { background: var(--orange-light); color: var(--orange-dark); }
+  .grade-pill--green  { background: var(--green-light);  color: #1a6b4f; }
+  .grade-pill--purple { background: var(--purple-light); color: #4840a8; }
+  
+  /* Subject bullet list inside table cells */
+  .subject-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .subject-list li {
+    font-size: 17px;
+    color: var(--text-muted);
+    padding-left: var(--sp-3);
+    position: relative;
+  }
+  
+  .subject-list li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--text-light);
+    font-weight: 700;
+  }
+  
+  
+  /* ── SUBJECT OVERVIEW CARDS ── */
+  .subject-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: var(--sp-5);
+  }
+  
+  .subject-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: box-shadow var(--t-base), transform var(--t-base);
+  }
+  
+  .subject-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+  
+  /* Coloured header band */
+  .subject-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--sp-4) var(--sp-5);
+  }
+  
+  .subject-card__header--orange { background: var(--orange-light); }
+  .subject-card__header--green  { background: var(--green-light); }
+  .subject-card__header--purple { background: var(--purple-light); }
+  .subject-card__header--navy   { background: var(--navy-light); }
+  
+  .subject-card__icon {
+    font-size: 32px;
+    line-height: 1;
+  }
+  
+  /* Card body */
+  .subject-card__body {
+    padding: var(--sp-5);
+  }
+  
+  .subject-card__body h3 {
+    font-size: 19px;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+  
+  .subject-card__zh {
+    font-size: 17px;
+    color: var(--text-light);
+    margin-bottom: var(--sp-3);
+    font-family: 'Noto Sans TC', sans-serif;
+  }
+  
+  .subject-card__body > p {
+    font-size: 18px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: var(--sp-4);
+  }
+  
+  .subject-card__highlights {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+    border-top: 1px solid var(--border);
+    padding-top: var(--sp-4);
+  }
+  
+  .subject-card__highlights li {
+    font-size: 17px;
+    color: var(--text-muted);
+    padding-left: var(--sp-5);
+    position: relative;
+  }
+  
+  .subject-card__highlights li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  
+  .subject-card:nth-child(1) .subject-card__highlights li::before { color: var(--orange); }
+  .subject-card:nth-child(2) .subject-card__highlights li::before { color: var(--green); }
+  .subject-card:nth-child(3) .subject-card__highlights li::before { color: var(--purple); }
+  .subject-card:nth-child(4) .subject-card__highlights li::before { color: var(--navy); }
+  
+  
+  /* ── APPROACH GRID ── */
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: var(--sp-5);
+  }
+  
+  .approach-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-6);
+    position: relative;
+    transition: box-shadow var(--t-base), transform var(--t-base);
+  }
+  
+  .approach-card:hover {
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
+  }
+  
+  .approach-card__step {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--orange);
+    margin-bottom: var(--sp-3);
+  }
+  
+  .approach-card h3 {
+    font-size: 17px;
+    color: var(--navy);
+    margin-bottom: var(--sp-3);
+    line-height: 1.35;
+  }
+  
+  .approach-card p {
+    font-size: 18px;
+    color: var(--text-muted);
+    line-height: 1.75;
+  }
+  
+  /* Orange top border on first card to anchor the grid visually */
+  .approach-card:first-child {
+    border-top: 3px solid var(--orange);
+  }
+  
+  
+  /* ── ENGLISH JOURNAL ── */
+  .journal-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: var(--sp-6);
+    align-items: start;
+  }
+  
+  /* Featured article */
+  .journal-article--featured {
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-6);
+    border-left: 4px solid var(--orange);
+  }
+  
+  .journal-article__label {
+    display: flex;
+    gap: var(--sp-2);
+    margin-bottom: var(--sp-4);
+    flex-wrap: wrap;
+  }
+  
+  .journal-article__title {
+    font-size: 22px;
+    color: var(--navy);
+    line-height: 1.35;
+    margin-bottom: var(--sp-2);
+    font-style: italic;
+  }
+  
+  .journal-article__byline {
+    font-size: 17px;
+    color: var(--text-light);
+    margin-bottom: var(--sp-4);
+  }
+  
+  .journal-article__excerpt {
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: var(--sp-5);
+  
+    /* Indent first line like a real article */
+    text-indent: 1.5em;
+  }
+  
+  .journal-article__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-4);
+    padding-top: var(--sp-4);
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  
+  /* Sidebar — smaller articles */
+  .journal-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+  }
+  
+  .journal-mini {
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--sp-4) var(--sp-5);
+    transition: box-shadow var(--t-fast);
+  }
+  
+  .journal-mini:hover {
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .journal-mini__title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.4;
+    margin-bottom: var(--sp-2);
+    font-style: italic;
+  }
+  
+  .journal-mini__excerpt {
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: var(--sp-3);
+  }
+  
+  .journal-mini__link {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--navy);
+    transition: color var(--t-fast);
+  }
+  
+  .journal-mini__link:hover {
+    color: var(--orange);
+  }
+  
+  .journal-sidebar__more {
+    padding-top: var(--sp-2);
+  }
+  
+  .journal-sidebar__more .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  
+  /* ── DOWNLOADABLE RESOURCES ── */
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: var(--sp-3);
+  }
+  
+  .resource-card {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--sp-4) var(--sp-5);
+    text-decoration: none;
+    transition: box-shadow var(--t-fast), border-color var(--t-fast), transform var(--t-fast);
+    cursor: pointer;
+  }
+  
+  .resource-card:hover {
+    box-shadow: var(--shadow-sm);
+    border-color: var(--navy);
+    transform: translateX(3px);
+  }
+  
+  .resource-card__icon {
+    font-size: 26px;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  
+  .resource-card__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  
+  .resource-card__info strong {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.4;
+  }
+  
+  .resource-card__info span {
+    font-size: 18px;
+    color: var(--text-muted);
+  }
+  
+  .resource-card__type {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--orange-dark);
+    background: var(--orange-light);
+    padding: 2px 7px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    letter-spacing: 0.05em;
+  }
+  
+  
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  @media (max-width: 1024px) {
+    .journal-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .journal-sidebar {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+    }
+  
+    .journal-sidebar__more {
+      grid-column: 1 / -1;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .policy-banner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--sp-4);
+      padding: var(--sp-5);
+    }
+  
+    .policy-banner__link {
+      width: 100%;
+      justify-content: center;
+    }
+  
+    .subject-cards-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .approach-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .journal-sidebar {
+      grid-template-columns: 1fr;
+    }
+  
+    .resources-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .journal-article__footer {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .section-nav__link {
+      padding: 12px var(--sp-3);
+      font-size: 18px;
+    }
+  
+    .journal-article__title {
+      font-size: 18px;
+    }
+  }
+  
+  
+  /* ── SECTION NAV ACTIVE STATE (set by JS) ── */
+  .section-nav__link.active {
+    color: var(--navy);
+    border-bottom-color: var(--orange);
+    font-weight: 600;
+  }

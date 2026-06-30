@@ -1,0 +1,651 @@
+/* ============================================================
+   Qing Pu Elementary School — English Website
+   about.css  |  Page-specific styles for about.html
+   ============================================================ */
+
+
+/* ── PAGE HERO (shared pattern — reuse for other pages too) ── */
+.page-hero {
+    background: linear-gradient(135deg, #eae8ff 0%, #ffe8f0 50%, #e8f9f4 100%);
+    padding: var(--sp-8) 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Grid texture hidden for playful theme */
+  .page-hero::before { display: none; }
+  
+  .page-hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    padding-bottom: var(--sp-9);
+  }
+  
+  .page-hero__title {
+    color: var(--navy);
+    margin-bottom: var(--sp-4);
+  }
+  
+  .page-hero__desc {
+    color: var(--text-muted);
+    font-size: 17px;
+    line-height: 1.7;
+  }
+  
+  /* Wave SVG that transitions navy hero into page bg */
+  .page-hero__wave {
+    display: block;
+    line-height: 0;
+    margin-bottom: -1px; /* prevent 1px gap */
+  }
+  
+  .page-hero__wave svg {
+    width: 100%;
+    height: 60px;
+  }
+  
+  
+  /* ── BREADCRUMB ── */
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    margin-bottom: var(--sp-5);
+    font-size: 17px;
+  }
+  
+  .breadcrumb a {
+    color: var(--text-muted);
+    transition: color var(--t-fast);
+  }
+  
+  .breadcrumb a:hover {
+    color: var(--navy);
+  }
+  
+  .breadcrumb span[aria-current="page"] {
+    color: var(--navy);
+    font-weight: 700;
+  }
+  
+  .breadcrumb span[aria-hidden="true"] {
+    color: var(--text-light);
+  }
+  
+  
+  /* ── PRINCIPAL'S WELCOME ── */
+  .welcome-block {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+    padding: var(--sp-6) var(--sp-7);
+    background: var(--navy-light);
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(26,79,122,0.12);
+    position: relative;
+  }
+  
+  .welcome-block__quote-mark {
+    font-size: 80px;
+    line-height: 1;
+    color: var(--orange);
+    opacity: 0.25;
+    font-family: Georgia, serif;
+    position: absolute;
+    top: var(--sp-3);
+    left: var(--sp-6);
+    user-select: none;
+  }
+  
+  .welcome-block__quote {
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--navy);
+    font-style: italic;
+    margin-bottom: var(--sp-5);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .welcome-block__author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sp-3);
+  }
+  
+  .welcome-block__avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #eae8ff 0%, #ffe8f0 50%, #e8f9f4 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  
+  .welcome-block__name {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+  
+  
+  /* ── HISTORY TIMELINE ── */
+  .timeline {
+    position: relative;
+    max-width: 720px;
+  }
+  
+  .timeline__item {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 0 var(--sp-5);
+    margin-bottom: var(--sp-6);
+  }
+  
+  .timeline__item:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Left column: dot + vertical line */
+  .timeline__marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4px;
+  }
+  
+  .timeline__dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--bg-white);
+    border: 3px solid var(--navy);
+    flex-shrink: 0;
+    transition: border-color var(--t-base), background var(--t-base);
+  }
+  
+  .timeline__dot--current {
+    background: var(--orange);
+    border-color: var(--orange);
+    box-shadow: 0 0 0 4px var(--orange-light);
+  }
+  
+  .timeline__line {
+    flex: 1;
+    width: 2px;
+    background: var(--border);
+    margin-top: 6px;
+    margin-bottom: -6px;
+  }
+  
+  .timeline__item:last-child .timeline__line {
+    display: none;
+  }
+  
+  /* Right column: text content */
+  .timeline__content {
+    padding-bottom: var(--sp-5);
+  }
+  
+  .timeline__year {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: var(--navy-light);
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: var(--sp-2);
+  }
+  
+  .timeline__year--current {
+    background: var(--orange-light);
+    color: var(--orange-dark);
+  }
+  
+  .timeline__title {
+    font-size: 18px;
+    color: var(--navy);
+    margin-bottom: var(--sp-2);
+  }
+  
+  .timeline__desc {
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+  
+  .timeline__tags {
+    display: flex;
+    gap: var(--sp-2);
+    flex-wrap: wrap;
+    margin-top: var(--sp-3);
+  }
+  
+  /* Hover: highlight the dot */
+  .timeline__item:hover .timeline__dot:not(.timeline__dot--current) {
+    background: linear-gradient(135deg, #eae8ff 0%, #ffe8f0 50%, #e8f9f4 100%);
+  }
+  
+  
+  /* ── VISION PILLARS ── */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: var(--sp-5);
+    align-items: stretch;
+  }
+  
+  .pillar-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-6);
+    text-align: center;
+    transition: box-shadow var(--t-base), transform var(--t-base);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .pillar-card:hover,
+  .pillar-card:focus-within {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px) scale(1.02);
+    background: var(--sky-light);
+    border-color: var(--sky);
+  }
+  
+  .pillar-card:active {
+    transform: scale(0.97);
+    background: var(--sky);
+    border-color: var(--navy);
+  }
+  
+  .pillar-card:hover .pillar-card__word {
+    color: var(--orange-dark);
+  }
+  
+  /* Middle card gets the navy highlight treatment */
+  .pillar-card--center {
+    background: linear-gradient(135deg, var(--navy) 0%, #7b8fe0 100%);
+    border-color: transparent;
+    box-shadow: var(--shadow-md);
+  }
+  
+  .pillar-card--center h3,
+  .pillar-card--center p {
+    color: #fff !important;
+  }
+  
+  .pillar-card--center .pillar-card__zh {
+    color: rgba(255,255,255,0.65);
+  }
+  
+  .pillar-card--center .pillar-card__desc {
+    color: rgba(255,255,255,0.88);
+  }
+  
+  .pillar-card__icon {
+    font-size: 44px;
+    margin-bottom: var(--sp-4);
+    line-height: 1;
+  }
+  
+  .pillar-card__word {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  
+  .pillar-card__zh {
+    font-size: 17px;
+    color: var(--text-muted);
+    margin-bottom: var(--sp-4);
+    font-family: 'Noto Sans TC', sans-serif;
+  }
+  
+  .pillar-card__desc {
+    font-size: 18px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+  
+  
+  /* ── BUILDING DESIGN ── */
+  .building-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-6);
+    align-items: start;
+  }
+  
+  .building-concept {
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  
+  .building-concept__visual {
+    background: var(--navy-light);
+    padding: var(--sp-6) var(--sp-5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .building-concept__visual svg {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+  }
+  
+  .building-concept__text {
+    padding: var(--sp-5);
+  }
+  
+  .building-concept__text h3 {
+    font-size: 18px;
+    color: var(--navy);
+    margin-bottom: var(--sp-3);
+  }
+  
+  .building-concept__text p {
+    font-size: 18px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: var(--sp-3);
+  }
+  
+  .building-concept__text p:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Four colors grid */
+  .building-colors {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .building-colors__title {
+    font-size: 20px;
+    color: var(--navy);
+    margin-bottom: var(--sp-3);
+  }
+  
+  .building-colors__intro {
+    font-size: 18px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: var(--sp-5);
+  }
+  
+  .color-identity-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+  }
+  
+  .color-identity-card {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--sp-4);
+    transition: box-shadow var(--t-fast), transform var(--t-fast);
+  }
+  
+  .color-identity-card:hover {
+    box-shadow: var(--shadow-sm);
+    transform: translateX(3px);
+  }
+  
+  .color-identity-swatch {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+  }
+  
+  .color-identity-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  
+  .color-identity-info strong {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  
+  .color-identity-info span {
+    font-size: 18px;
+    color: var(--text-muted);
+  }
+  
+  
+  /* ── CAMPUS PHOTO GRID ── */
+  .campus-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    grid-template-rows: auto auto;
+    gap: var(--sp-3);
+  }
+  
+  /* Large photo spans 2 columns and 2 rows */
+  .campus-photo--large {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  
+  .campus-photo {
+    background: var(--navy-light);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    transition: opacity var(--t-base);
+  }
+  
+  .campus-photo--large {
+    aspect-ratio: auto;
+    min-height: 300px;
+  }
+  
+  .campus-photo:hover {
+    opacity: 0.9;
+  }
+  
+  /* Real photo — when <img> replaces the placeholder */
+  .campus-photo__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Placeholder (remove once you have real photos) */
+  .campus-photo__placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sp-2);
+    color: var(--text-muted);
+  }
+  
+  .campus-photo__placeholder span {
+    font-size: 36px;
+    line-height: 1;
+  }
+  
+  .campus-photo__placeholder p {
+    font-size: 18px;
+    color: var(--text-light);
+  }
+  
+  .campus-photo--large .campus-photo__placeholder span {
+    font-size: 56px;
+  }
+  
+  .campus-photo--large .campus-photo__placeholder p {
+    font-size: 18px;
+  }
+  
+  
+  /* ── CTA STRIP ── */
+  .cta-strip {
+    background: var(--bg-white);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .cta-strip__inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: center;
+    padding: var(--sp-6) var(--sp-8);
+    gap: 0;
+    max-width: 1320px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  
+  .cta-strip__item {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+    padding: var(--sp-5) var(--sp-6);
+    min-width: 0;
+  }
+  
+  .cta-strip__item h4 {
+    font-size: 18px;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+  
+  .cta-strip__item p {
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+  
+  .cta-strip__item .btn {
+    margin-left: auto;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  
+  .cta-strip__icon {
+    font-size: 32px;
+    flex-shrink: 0;
+  }
+  
+  /* Vertical divider between items */
+  .cta-strip__divider {
+    width: 1px;
+    height: 64px;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+  
+  
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  @media (max-width: 1024px) {
+    .building-layout {
+      grid-template-columns: 1fr;
+    }
+  
+    .cta-strip__inner {
+      flex-direction: column;
+      gap: var(--sp-5);
+      padding: var(--sp-6) var(--sp-5);
+    }
+  
+    .cta-strip__divider {
+      width: 80%;
+      height: 1px;
+    }
+  
+    .cta-strip__item {
+      width: 100%;
+      padding: 0;
+    }
+  
+    .cta-strip__item .btn {
+      margin-left: 0;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .page-hero__inner {
+      padding-bottom: var(--sp-7);
+    }
+  
+    .welcome-block {
+      padding: var(--sp-5) var(--sp-5);
+    }
+  
+    .welcome-block__quote {
+      font-size: 18px;
+    }
+  
+    .welcome-block__quote-mark {
+      font-size: 56px;
+      left: var(--sp-4);
+    }
+  
+    .timeline {
+      max-width: 100%;
+    }
+  
+    .timeline__item {
+      grid-template-columns: 32px 1fr;
+      gap: 0 var(--sp-3);
+    }
+  
+    .pillars-grid {
+      grid-template-columns: 1fr;
+      max-width: 460px;
+      margin: 0 auto;
+    }
+  
+    .campus-grid {
+      grid-template-columns: repeat(2, minmax(0,1fr));
+    }
+  
+    .campus-photo--large {
+      grid-column: span 2;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .campus-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .campus-photo--large {
+      grid-column: span 1;
+      min-height: 200px;
+    }
+  }

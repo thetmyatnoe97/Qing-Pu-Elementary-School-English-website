@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="News and events from Qing Pu Elementary School — announcements, awards, field trips, and school activities.">
+  <title>News &amp; Events — Qing Pu Elementary School</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages/about.css">
+  <link rel="stylesheet" href="css/pages/news.css">
+  <link rel="stylesheet" href="css/playful-theme.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="container navbar__inner">
+      <a href="index.html" class="navbar__logo" aria-label="Qing Pu Elementary School — home">
+        <div class="navbar__logo-img" aria-hidden="true"><img src="images/History/logo.png" alt=""></div>
+        <div class="navbar__logo-text">
+          <span class="navbar__name">Qing Pu Elementary School</span>
+          <span class="navbar__sub">青埔國小 · Taoyuan, Taiwan</span>
+        </div>
+      </a>
+      <ul class="navbar__links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="bilingual.html">Bilingual</a></li>
+        <li><a href="teachers.html">Teachers</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="visit.html">Visit</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener" class="navbar__lang" aria-label="Switch to Chinese website">🇹🇼 中文</a>
+      <button class="navbar__toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="navbar__mobile" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="bilingual.html">Bilingual education</a>
+      <a href="teachers.html">Bilingual teachers</a>
+      <a href="news.html">News</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="visit.html">Visit us</a>
+      <a href="contact.html">Contact</a>
+      <div class="navbar__mobile-lang">
+        <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener">🇹🇼 View Chinese website →</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <main id="main">
+
+    <!-- ============================================================
+         PAGE HERO
+         ============================================================ -->
+    <section class="page-hero" aria-label="News and events">
+      <div class="container page-hero__inner">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span aria-hidden="true">›</span>
+          <span aria-current="page">News &amp; events</span>
+        </nav>
+        <h1 class="page-hero__title">News &amp; events</h1>
+        <p class="page-hero__desc">
+          Announcements, awards, field trips, and highlights from our school community —
+          written in English for families and visitors around the world.
+        </p>
+      </div>
+      <div class="page-hero__wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" fill="var(--bg)"/>
+        </svg>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         MAIN CONTENT — two-column layout: articles + sidebar
+         ============================================================ -->
+    <section class="section" aria-label="News articles">
+      <div class="container news-layout">
+
+        <!-- ── LEFT: filter tabs + article grid ── -->
+        <div class="news-main">
+
+          <!-- Filter tabs -->
+          <div class="filter-bar" role="tablist" aria-label="Filter news by category">
+            <button class="filter-btn active" role="tab" aria-selected="true"  data-filter="all"         >All</button>
+            <button class="filter-btn"        role="tab" aria-selected="false" data-filter="event"       >🗓 Events</button>
+            <button class="filter-btn"        role="tab" aria-selected="false" data-filter="award"       >🏆 Awards</button>
+            <button class="filter-btn"        role="tab" aria-selected="false" data-filter="announcement">📢 Announcements</button>
+            <button class="filter-btn"        role="tab" aria-selected="false" data-filter="fieldtrip"   >🚌 Field trips</button>
+            <button class="filter-btn"        role="tab" aria-selected="false" data-filter="bilingual"   >🌐 Bilingual</button>
+          </div>
+
+          <!-- Result count -->
+          <p class="news-count" aria-live="polite" aria-atomic="true">
+            Showing <strong class="news-count__num">…</strong> articles
+          </p>
+
+          <!-- ── FEATURED ARTICLE ── (filled in by main.js from news.json) -->
+          <article class="news-featured fade-in" data-category="event">
+            <div class="news-featured__img" aria-hidden="true">
+              <div class="news-img-placeholder">⏳</div>
+            </div>
+            <div class="news-featured__body">
+              <p class="text-sm text-muted">Loading latest news…</p>
+            </div>
+          </article>
+
+          <!-- ── ARTICLE GRID ── (filled in by main.js from news.json) -->
+          <div class="news-grid" id="news-grid" role="list" aria-label="News articles">
+          </div><!-- end .news-grid -->
+
+          <!-- Empty state — shown by JS when no results match filter -->
+          <div class="news-empty" aria-live="polite" hidden>
+            <div class="news-empty__icon" aria-hidden="true">📭</div>
+            <h3>No articles in this category yet</h3>
+            <p>Check back soon, or <a href="#" data-filter="all" class="filter-reset-link">view all news</a>.</p>
+          </div>
+
+          <!-- Pagination — paginates the 8 article cards below the featured story, 3 per page -->
+          <nav class="pagination" id="news-pagination" aria-label="News pages">
+            <button type="button" class="pagination__btn pagination__btn--prev" id="pagination-prev" aria-label="Previous page" disabled>← Newer</button>
+            <div class="pagination__pages" id="pagination-pages">
+              <button type="button" class="pagination__page active" data-page="1" aria-current="page" aria-label="Page 1">1</button>
+              <button type="button" class="pagination__page" data-page="2" aria-label="Page 2">2</button>
+              <button type="button" class="pagination__page" data-page="3" aria-label="Page 3">3</button>
+            </div>
+            <button type="button" class="pagination__btn pagination__btn--next" id="pagination-next" aria-label="Next page">Older →</button>
+          </nav>
+
+          <p class="news-chinese-note">
+            📌 This page covers selected news in English. For the complete school news archive in Chinese,
+            visit the <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener">main school website →</a>
+          </p>
+
+        </div><!-- end .news-main -->
+
+
+        <!-- ── RIGHT: sidebar ── -->
+        <aside class="news-sidebar" aria-label="News sidebar">
+
+          <!-- Search -->
+          <div class="sidebar-widget">
+            <h3 class="sidebar-widget__title">Search news</h3>
+            <div class="search-box" role="search">
+              <label for="news-search" class="sr-only">Search articles</label>
+              <input
+                type="search"
+                id="news-search"
+                class="search-box__input"
+                placeholder="e.g. science fair, field trip…"
+                aria-label="Search news articles"
+              >
+              <button class="search-box__btn" aria-label="Submit search">🔍</button>
+            </div>
+          </div>
+
+          <!-- Categories -->
+          <div class="sidebar-widget">
+            <h3 class="sidebar-widget__title">Categories</h3>
+            <ul class="category-list" role="list">
+              <li>
+                <button class="category-list__item" data-filter="all">
+                  <span>All articles</span>
+                  <span class="category-list__count">…</span>
+                </button>
+              </li>
+              <li>
+                <button class="category-list__item" data-filter="event">
+                  <span>🗓 Events</span>
+                  <span class="category-list__count">…</span>
+                </button>
+              </li>
+              <li>
+                <button class="category-list__item" data-filter="award">
+                  <span>🏆 Awards</span>
+                  <span class="category-list__count">…</span>
+                </button>
+              </li>
+              <li>
+                <button class="category-list__item" data-filter="announcement">
+                  <span>📢 Announcements</span>
+                  <span class="category-list__count">…</span>
+                </button>
+              </li>
+              <li>
+                <button class="category-list__item" data-filter="fieldtrip">
+                  <span>🚌 Field trips</span>
+                  <span class="category-list__count">…</span>
+                </button>
+              </li>
+              <li>
+                <button class="category-list__item" data-filter="bilingual">
+                  <span>🌐 Bilingual</span>
+                  <span class="category-list__count">…</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Recent posts -->
+          <div class="sidebar-widget">
+            <h3 class="sidebar-widget__title">Recent articles</h3>
+            <ul class="recent-list" role="list">
+              <li class="recent-item"><span class="text-sm text-muted">Loading…</span></li>
+            </ul>
+          </div>
+
+          <!-- Archive by year -->
+          <div class="sidebar-widget">
+            <h3 class="sidebar-widget__title">Archive</h3>
+            <ul class="archive-list" role="list">
+              <li><a href="#" class="archive-list__item"><span>2025–2026</span><span class="category-list__count">9</span></a></li>
+              <li><a href="#" class="archive-list__item"><span>2024–2025</span><span class="category-list__count">14</span></a></li>
+              <li><a href="#" class="archive-list__item"><span>2023–2024</span><span class="category-list__count">11</span></a></li>
+            </ul>
+          </div>
+
+          <!-- Quick links -->
+          <div class="sidebar-widget sidebar-widget--cta">
+            <p class="text-sm" style="color:rgba(255,255,255,0.75); margin-bottom: var(--sp-3);">
+              Want to read everything in Chinese too?
+            </p>
+            <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener" class="btn btn-ghost" style="width:100%; justify-content:center;">
+              Visit main school site 🇹🇼
+            </a>
+          </div>
+
+        </aside>
+
+      </div><!-- end .news-layout -->
+    </section>
+
+  </main>
+
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <div class="footer__logo-box" aria-hidden="true"><img src="images/History/logo.png" alt=""></div>
+            <div>
+              <div class="footer__school-name">Qing Pu Elementary School</div>
+              <div class="footer__school-zh">桃園市中壢區青埔國民小學</div>
+            </div>
+          </div>
+          <p class="footer__desc">A bilingual elementary school in Taoyuan, Taiwan. Inspiring hope, happiness, and a sense of achievement in every student since 1946.</p>
+        </div>
+        <div>
+          <p class="footer__col-title">Pages</p>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About the school</a></li>
+            <li><a href="bilingual.html">Bilingual education</a></li>
+            <li><a href="news.html">News &amp; events</a></li>
+            <li><a href="gallery.html">Photo gallery</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">More</p>
+          <ul class="footer__links">
+            <li><a href="visit.html">Visit us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener">Main website (中文)</a></li>
+            <li><a href="http://163.30.130.236/bilingual/index.php" target="_blank" rel="noopener">Bilingual site</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Contact</p>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">📍</span>
+            <span>No. 122, Section 2, Qingpu Road, Zhongli District, Taoyuan City, Taiwan</span>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">☎️</span>
+            <span>03 - 4531626</span>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">📞</span>
+            <span>+ 886 3 4531626</span>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">🕘</span>
+            <span>Mon–Fri · 07:30–17:00</span>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">✉️</span>
+            <span>cfc224@gmail.com</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2026 Qing Pu Elementary School · Taoyuan, Taiwan · All rights reserved.</p>
+        <div class="footer__bottom-links">
+          <a href="#">Sitemap</a>
+          <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener">中文網站</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>

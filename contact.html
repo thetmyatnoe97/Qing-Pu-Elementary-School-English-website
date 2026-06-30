@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Qing Pu Elementary School — send us a message in English, find department contacts, and read our FAQ for visiting families.">
+  <title>Contact — Qing Pu Elementary School</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages/about.css">
+  <link rel="stylesheet" href="css/pages/visit-contact.css">
+  <link rel="stylesheet" href="css/playful-theme.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="container navbar__inner">
+      <a href="index.html" class="navbar__logo" aria-label="Qing Pu Elementary School — home">
+        <div class="navbar__logo-img" aria-hidden="true"><img src="images/History/logo.png" alt=""></div>
+        <div class="navbar__logo-text">
+          <span class="navbar__name">Qing Pu Elementary School</span>
+          <span class="navbar__sub">青埔國小 · Taoyuan, Taiwan</span>
+        </div>
+      </a>
+      <ul class="navbar__links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="bilingual.html">Bilingual</a></li>
+        <li><a href="teachers.html">Teachers</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="visit.html">Visit</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener" class="navbar__lang">🇹🇼 中文</a>
+      <button class="navbar__toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="navbar__mobile" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="bilingual.html">Bilingual education</a>
+      <a href="teachers.html">Bilingual teachers</a>
+      <a href="news.html">News</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="visit.html">Visit us</a>
+      <a href="contact.html">Contact</a>
+      <div class="navbar__mobile-lang">
+        <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener">🇹🇼 View Chinese website →</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <main id="main">
+
+    <!-- ── PAGE HERO ── -->
+    <section class="page-hero" aria-label="Contact us">
+      <div class="container page-hero__inner">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span aria-hidden="true">›</span>
+          <span aria-current="page">Contact</span>
+        </nav>
+        <h1 class="page-hero__title">Get in touch</h1>
+        <p class="page-hero__desc">
+          We welcome enquiries from parents, researchers, and visitors in English.
+          Fill in the form below or reach us directly — we aim to reply within two school days.
+        </p>
+      </div>
+      <div class="page-hero__wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" fill="var(--bg)"/>
+        </svg>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         CONTACT FORM + SIDEBAR — two column
+         ============================================================ -->
+    <section class="section" aria-labelledby="form-heading">
+      <div class="container contact-layout">
+
+        <!-- ── LEFT: contact form ── -->
+        <div class="contact-form-wrap fade-in">
+          <h2 id="form-heading" class="contact-form-wrap__title">Send us a message</h2>
+          <p class="contact-form-wrap__sub">All fields marked <abbr title="required">*</abbr> are required.</p>
+
+          <!--
+            ACTION: Change action="contact.php" to point to the PHP mailer on the school server.
+            The contact.php file is included in this project — the IT engineer just needs to
+            update the $to email address inside it.
+          -->
+          <form
+            class="contact-form"
+            action="contact.php"
+            method="POST"
+            novalidate
+            id="contact-form"
+            aria-label="Contact form"
+          >
+            <!-- Honeypot — spam protection, hidden from real users -->
+            <div class="contact-form__honeypot" aria-hidden="true">
+              <label for="website">Leave this blank</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <!-- Name row -->
+            <div class="form-row form-row--split">
+              <div class="form-group">
+                <label class="form-label" for="first-name">First name <abbr title="required">*</abbr></label>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="first-name"
+                  name="first_name"
+                  required
+                  autocomplete="given-name"
+                  placeholder="e.g. Lin"
+                >
+                <span class="form-error" aria-live="polite"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="last-name">Last name <abbr title="required">*</abbr></label>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="last-name"
+                  name="last_name"
+                  required
+                  autocomplete="family-name"
+                  placeholder="e.g. Mei-Ling"
+                >
+                <span class="form-error" aria-live="polite"></span>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+              <label class="form-label" for="email">Email address <abbr title="required">*</abbr></label>
+              <input
+                class="form-input"
+                type="email"
+                id="email"
+                name="email"
+                required
+                autocomplete="email"
+                placeholder="e.g. name@example.com"
+              >
+              <span class="form-error" aria-live="polite"></span>
+            </div>
+
+            <!-- Phone (optional) -->
+            <div class="form-group">
+              <label class="form-label" for="phone">
+                Phone number
+                <span class="form-label__optional">(optional)</span>
+              </label>
+              <input
+                class="form-input"
+                type="tel"
+                id="phone"
+                name="phone"
+                autocomplete="tel"
+                placeholder="e.g. +886 9XX XXX XXX"
+              >
+            </div>
+
+            <!-- Subject / enquiry type -->
+            <div class="form-group">
+              <label class="form-label" for="subject">Subject <abbr title="required">*</abbr></label>
+              <div class="form-select-wrap">
+                <select class="form-input form-select" id="subject" name="subject" required>
+                  <option value="" disabled selected>Select a topic…</option>
+                  <option value="enrollment">Enrolment enquiry</option>
+                  <option value="bilingual">Bilingual programme information</option>
+                  <option value="visit">Arrange a school visit</option>
+                  <option value="media">Media / research request</option>
+                  <option value="general">General enquiry</option>
+                  <option value="other">Other</option>
+                </select>
+                <span class="form-select-arrow" aria-hidden="true">▾</span>
+              </div>
+              <span class="form-error" aria-live="polite"></span>
+            </div>
+
+            <!-- Message -->
+            <div class="form-group">
+              <label class="form-label" for="message">Message <abbr title="required">*</abbr></label>
+              <textarea
+                class="form-input form-textarea"
+                id="message"
+                name="message"
+                required
+                rows="6"
+                placeholder="Please write your message in English or Chinese — both are welcome."
+              ></textarea>
+              <div class="form-char-count">
+                <span class="form-char-count__num">0</span> / 1000 characters
+              </div>
+              <span class="form-error" aria-live="polite"></span>
+            </div>
+
+            <!-- Language preference -->
+            <div class="form-group">
+              <fieldset class="form-fieldset">
+                <legend class="form-label">Preferred reply language</legend>
+                <div class="form-radio-group">
+                  <label class="form-radio">
+                    <input type="radio" name="reply_language" value="english" checked>
+                    <span>English</span>
+                  </label>
+                  <label class="form-radio">
+                    <input type="radio" name="reply_language" value="chinese">
+                    <span>中文</span>
+                  </label>
+                  <label class="form-radio">
+                    <input type="radio" name="reply_language" value="either">
+                    <span>Either is fine</span>
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+
+            <!-- Submit -->
+            <div class="form-submit-row">
+              <button type="submit" class="btn btn-primary form-submit-btn" id="submit-btn">
+                <span class="form-submit-btn__text">Send message</span>
+                <span class="form-submit-btn__spinner" aria-hidden="true" hidden>⏳</span>
+              </button>
+              <p class="form-privacy">
+                Your details are used only to respond to your enquiry and are not shared with third parties.
+              </p>
+            </div>
+
+            <!-- Success / error messages (shown by JS after submission) -->
+            <div class="form-feedback form-feedback--success" role="alert" aria-live="assertive" hidden>
+              <span aria-hidden="true">✅</span>
+              <div>
+                <strong>Message sent!</strong>
+                <p>Thank you — we will reply to your email within two school days.</p>
+              </div>
+            </div>
+
+            <div class="form-feedback form-feedback--error" role="alert" aria-live="assertive" hidden>
+              <span aria-hidden="true">⚠️</span>
+              <div>
+                <strong>Something went wrong.</strong>
+                <p>Please try again or email us directly at <a href="mailto:cpps@ms.tyc.edu.tw">cpps@ms.tyc.edu.tw</a>.</p>
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+
+        <!-- ── RIGHT: sidebar info ── -->
+        <aside class="contact-sidebar" aria-label="Contact information">
+
+          <!-- Direct contact -->
+          <div class="contact-info-block fade-in">
+            <h3 class="contact-info-block__title">Direct contact</h3>
+            <ul class="contact-detail-list">
+              <li>
+                <span class="contact-detail-list__icon" aria-hidden="true">📞</span>
+                <div>
+                  <strong>Main office</strong>
+                  <a href="tel:+88634531626">(03) 4531626</a>
+                </div>
+              </li>
+              <li>
+                <span class="contact-detail-list__icon" aria-hidden="true">📠</span>
+                <div>
+                  <strong>Fax</strong>
+                  <span>(03) 4531441</span>
+                </div>
+              </li>
+              <li>
+                <span class="contact-detail-list__icon" aria-hidden="true">✉️</span>
+                <div>
+                  <strong>General email</strong>
+                  <a href="mailto:cfc224@gmail.com">cfc224@gmail.com</a>
+                </div>
+              </li>
+              <li>
+                <span class="contact-detail-list__icon" aria-hidden="true">🕘</span>
+                <div>
+                  <strong>Office hours</strong>
+                  <span>Mon–Fri · 07:30–17:00</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Department directory -->
+          <div class="contact-info-block fade-in">
+            <h3 class="contact-info-block__title">Department directory</h3>
+            <ul class="dept-list">
+              <li class="dept-item">
+                <div class="dept-item__name">
+                  <span aria-hidden="true">🏫</span> Principal's Office
+                  <span class="dept-item__zh">校長室</span>
+                </div>
+                <a href="tel:+886328738383" class="dept-item__ext">Ext. 100</a>
+              </li>
+              <li class="dept-item">
+                <div class="dept-item__name">
+                  <span aria-hidden="true">📚</span> Academic Affairs
+                  <span class="dept-item__zh">教務處</span>
+                </div>
+                <a href="tel:+886328738383" class="dept-item__ext">Ext. 200</a>
+              </li>
+              <li class="dept-item">
+                <div class="dept-item__name">
+                  <span aria-hidden="true">🌐</span> Bilingual Programme
+                  <span class="dept-item__zh">雙語教育組</span>
+                </div>
+                <a href="tel:+886328738383" class="dept-item__ext">Ext. 220</a>
+              </li>
+              <li class="dept-item">
+                <div class="dept-item__name">
+                  <span aria-hidden="true">👨‍👩‍👧</span> Student Affairs
+                  <span class="dept-item__zh">學務處</span>
+                </div>
+                <a href="tel:+886328738383" class="dept-item__ext">Ext. 300</a>
+              </li>
+              <li class="dept-item">
+                <div class="dept-item__name">
+                  <span aria-hidden="true">🏢</span> General Affairs
+                  <span class="dept-item__zh">總務處</span>
+                </div>
+                <a href="tel:+886328738383" class="dept-item__ext">Ext. 400</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Address card -->
+          <div class="contact-info-block contact-info-block--navy fade-in">
+            <h3 class="contact-info-block__title">Our address</h3>
+            <address>
+              No. 122, Section 2, Qingpu Road<br>
+              Zhongli District, Taoyuan City 320<br>
+              Taiwan (R.O.C.)
+            </address>
+            <a href="visit.html" class="btn btn-ghost mt-4" style="width:100%; justify-content:center;">
+              📍 See directions & map
+            </a>
+          </div>
+
+        </aside>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         FAQ ACCORDION
+         ============================================================ -->
+    <section class="section bg-white" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-header centered">
+          <p class="eyebrow">❓ Common questions</p>
+          <h2 id="faq-heading">Frequently asked questions</h2>
+          <p>For families and visitors contacting us for the first time.</p>
+        </div>
+
+        <div class="faq-list" role="list">
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-1">
+              <span>Can I contact the school in English?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-1" hidden>
+              <p>
+                Yes — we welcome enquiries in English. The bilingual programme coordinator
+                and several teachers are comfortable with English correspondence. We aim to
+                reply to all English emails within two school days.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-2">
+              <span>How do I enrol my child at Qing Pu?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-2" hidden>
+              <p>
+                Enrolment is managed through Taoyuan City's centralised school assignment
+                system. Students are assigned to a school based on their registered household
+                address (戶籍). If you live in the Qingpu catchment area, your child will
+                automatically be assigned to our school. For detailed guidance, please contact
+                the Academic Affairs office (Ext. 200) or visit the
+                <a href="https://www.tyc.edu.tw" target="_blank" rel="noopener">Taoyuan City Education Bureau</a>.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-3">
+              <span>Can I arrange a campus visit or school tour?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-3" hidden>
+              <p>
+                Yes — we welcome visits from prospective families, researchers, and educators.
+                Please contact us at least one week in advance using the form above or by
+                calling the main office. Campus tours are available Monday to Friday between
+                09:00 and 16:00 during the school year.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-4">
+              <span>Does the school accept international or non-Taiwanese students?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-4" hidden>
+              <p>
+                Yes — children with valid residency in Taiwan (ARC holders, APRC holders, and
+                dependent family members of foreign nationals) can attend public schools
+                including Qing Pu. The same catchment-area rules apply. Contact the Academic
+                Affairs office for the specific documents required for non-citizen enrolment.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-5">
+              <span>I am a journalist or researcher. How do I request information?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-5" hidden>
+              <p>
+                Please use the contact form and select "Media / research request" as the
+                subject. Include your name, organisation, and the nature of your request.
+                All media and academic enquiries are reviewed by the principal's office.
+                We ask that on-campus photography and filming be pre-approved in writing.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-6">
+              <span>What languages do you teach English in — is it fully immersive?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-6" hidden>
+              <p>
+                We follow a CLIL (Content and Language Integrated Learning) approach rather
+                than full immersion. Core subjects like Life Studies, Science, and integrated
+                activities are taught bilingually — lessons use English as the primary medium
+                but teachers support comprehension in Mandarin when needed. This reduces
+                anxiety and produces stronger long-term language outcomes than strict
+                immersion for primary-age children. Visit our
+                <a href="bilingual.html#approach">Bilingual education page</a> for more detail.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <div class="footer__logo-box" aria-hidden="true"><img src="images/History/logo.png" alt=""></div>
+            <div>
+              <div class="footer__school-name">Qing Pu Elementary School</div>
+              <div class="footer__school-zh">桃園市中壢區青埔國民小學</div>
+            </div>
+          </div>
+          <p class="footer__desc">A bilingual elementary school in Taoyuan, Taiwan. Inspiring hope, happiness, and a sense of achievement in every student since 1946.</p>
+        </div>
+        <div>
+          <p class="footer__col-title">Pages</p>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About the school</a></li>
+            <li><a href="bilingual.html">Bilingual education</a></li>
+            <li><a href="news.html">News &amp; events</a></li>
+            <li><a href="gallery.html">Photo gallery</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">More</p>
+          <ul class="footer__links">
+            <li><a href="visit.html">Visit us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener">Main website (中文)</a></li>
+            <li><a href="http://163.30.130.236/bilingual/index.php" target="_blank" rel="noopener">Bilingual site</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Contact</p>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">📍</span>
+            <span>No. 122, Section 2, Qingpu Road, Zhongli District, Taoyuan City, Taiwan</span>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">☎️</span>
+            <span>03 - 4531626</span>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">📞</span>
+            <span>+ 886 3 4531626</span>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">🕘</span>
+            <span>Mon–Fri · 07:30–17:00</span>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">✉️</span>
+            <span>cfc224@gmail.com</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2026 Qing Pu Elementary School · Taoyuan, Taiwan · All rights reserved.</p>
+        <div class="footer__bottom-links">
+          <a href="#">Sitemap</a>
+          <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener">中文網站</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

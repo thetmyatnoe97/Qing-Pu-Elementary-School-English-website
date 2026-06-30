@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Photo gallery of Qing Pu Elementary School — campus, bilingual activities, events, sports, and student life in Taoyuan, Taiwan.">
+  <title>Gallery — Qing Pu Elementary School</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages/about.css">
+  <link rel="stylesheet" href="css/pages/gallery.css">
+  <link rel="stylesheet" href="css/playful-theme.css">
+  <style>
+    /* ── Album folder grid ── */
+    .album-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--sp-6);
+      margin-top: var(--sp-6);
+    }
+
+    .album-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 2.5px solid var(--border);
+      background: #fff;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease, border-color 0.2s;
+    }
+    .album-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 12px 32px rgba(91,111,206,0.18);
+      border-color: var(--sky);
+    }
+
+    .album-card__cover {
+      width: 100%;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    .album-card__cover img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .album-card__cover-emoji {
+      font-size: 72px;
+      line-height: 1;
+    }
+
+    .album-card__info {
+      padding: var(--sp-4) var(--sp-5);
+    }
+    .album-card__category {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--orange-dark);
+      background: var(--orange-light);
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 20px;
+      margin-bottom: var(--sp-2);
+    }
+    .album-card__title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .album-card__meta {
+      font-size: 14px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+    }
+    .album-card__count {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Category colour variants */
+    .album-card--campus   .album-card__cover { background: var(--navy-light); }
+    .album-card--bilingual .album-card__cover { background: var(--green-light); }
+    .album-card--events   .album-card__cover { background: var(--orange-light); }
+    .album-card--sports   .album-card__cover { background: var(--sky-light); }
+    .album-card--fieldtrip .album-card__cover { background: var(--yellow-light); }
+
+    .album-card--campus   .album-card__category { background: var(--navy-light); color: var(--navy); }
+    .album-card--bilingual .album-card__category { background: var(--green-light); color: #1a8b6a; }
+    .album-card--events   .album-card__category { background: var(--orange-light); color: var(--orange-dark); }
+    .album-card--sports   .album-card__category { background: var(--sky-light); color: #1a7ab0; }
+    .album-card--fieldtrip .album-card__category { background: var(--yellow-light); color: #b07a10; }
+
+    /* Category filter tabs */
+    .album-filter { display: flex; gap: var(--sp-2); flex-wrap: wrap; margin-bottom: var(--sp-5); }
+    .album-filter__btn {
+      padding: 8px 18px; border-radius: 20px; font-size: 15px; font-weight: 700;
+      border: 2px solid var(--border); background: var(--bg-white); color: var(--text-muted);
+      cursor: pointer; transition: all 0.15s ease; font-family: inherit;
+    }
+    .album-filter__btn:hover { border-color: var(--navy); color: var(--navy); background: var(--navy-light); }
+    .album-filter__btn.active { background: var(--navy); border-color: var(--navy); color: #fff; font-weight: 800; }
+
+    .album-card[hidden] { display: none; }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="container navbar__inner">
+      <a href="index.html" class="navbar__logo" aria-label="Qing Pu Elementary School — home">
+        <div class="navbar__logo-img" aria-hidden="true"><img src="images/History/logo.png" alt=""></div>
+        <div class="navbar__logo-text">
+          <span class="navbar__name">Qing Pu Elementary School</span>
+          <span class="navbar__sub">青埔國小 · Taoyuan, Taiwan</span>
+        </div>
+      </a>
+      <ul class="navbar__links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="bilingual.html">Bilingual</a></li>
+        <li><a href="teachers.html">Teachers</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="visit.html">Visit</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener" class="navbar__lang">🇹🇼 中文</a>
+      <button class="navbar__toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="navbar__mobile" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="bilingual.html">Bilingual education</a>
+      <a href="teachers.html">Bilingual teachers</a>
+      <a href="news.html">News</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="visit.html">Visit us</a>
+      <a href="contact.html">Contact</a>
+      <div class="navbar__mobile-lang">
+        <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener">🇹🇼 View Chinese website →</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- ── PAGE HERO ── -->
+    <section class="page-hero" aria-label="Photo gallery">
+      <div class="container page-hero__inner">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span aria-hidden="true">›</span>
+          <span aria-current="page">Gallery</span>
+        </nav>
+        <h1 class="page-hero__title">Photo Gallery</h1>
+        <p class="page-hero__desc">Browse our albums — campus life, bilingual activities, events, sports, and student moments.</p>
+      </div>
+      <div class="page-hero__wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" fill="var(--bg)"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ── ALBUMS ── -->
+    <section class="section" aria-labelledby="gallery-heading">
+      <div class="container">
+        <h2 id="gallery-heading" class="sr-only">Photo albums</h2>
+
+        <!-- Filter -->
+        <div class="album-filter" role="tablist" aria-label="Filter by category">
+          <button class="album-filter__btn active" data-filter="all">All albums</button>
+          <button class="album-filter__btn" data-filter="campus">Campus</button>
+          <button class="album-filter__btn" data-filter="bilingual">Bilingual</button>
+          <button class="album-filter__btn" data-filter="events">Events</button>
+          <button class="album-filter__btn" data-filter="sports">Sports</button>
+          <button class="album-filter__btn" data-filter="fieldtrip">Field trips</button>
+        </div>
+
+        <!-- Album grid -->
+        <div class="album-grid" id="album-grid">
+
+          <!-- CAMPUS -->
+          <a class="album-card album-card--campus" href="gallery-album.html?album=campus-old" data-category="campus">
+            <div class="album-card__cover"><span class="album-card__cover-emoji"><img src="images/History/old1.JPG" alt=""></span></div>
+            <div class="album-card__info">
+              <span class="album-card__category">Campus</span>
+              <div class="album-card__title">Old Building</div>
+              <div class="album-card__meta"><span class="album-card__count">3 photos</span><span>Before 2018</span></div>
+            </div>
+          </a>
+          
+          <a class="album-card album-card--campus" href="gallery-album.html?album=campus-construction" data-category="campus">
+            <div class="album-card__cover"><span class="album-card__cover-emoji"><img src="images/History/con7.jpeg" alt=""></span></div>
+            <div class="album-card__info">
+              <span class="album-card__category">Campus</span>
+              <div class="album-card__title">Construction</div>
+              <div class="album-card__meta"><span class="album-card__count">9 photos</span><span>2016–2018</span></div>
+            </div>
+          </a>
+          
+          <a class="album-card album-card--campus" href="gallery-album.html?album=campus-new" data-category="campus">
+            <div class="album-card__cover"><span class="album-card__cover-emoji"><img src="images/History/new2.JPG" alt=""></span></div>
+            <div class="album-card__info">
+              <span class="album-card__category">Campus</span>
+              <div class="album-card__title">New Building</div>
+              <div class="album-card__meta"><span class="album-card__count">5 photos</span><span>2018–Present</span></div>
+            </div>
+          </a>
+
+          <a class="album-card album-card--campus" href="gallery-album.html?album=campus-library" data-category="campus">
+            <div class="album-card__cover"><span class="album-card__cover-emoji"><img src="images/Campus/library7.jpg" alt=""></span></div>
+            <div class="album-card__info">
+              <span class="album-card__category">Campus</span>
+              <div class="album-card__title">Library</div>
+              <div class="album-card__meta"><span class="album-card__count">5 photos</span><span></span></div>
+            </div>
+          </a>
+
+          <!-- BILINGUAL -->
+          <a class="album-card album-card--bilingual" href="gallery-album.html?album=bilingual-baking" data-category="bilingual">
+            <div class="album-card__cover"><span class="album-card__cover-emoji"><img src="images/2025baking/baking12.jpg" alt=""></span></div>
+            <div class="album-card__info">
+              <span class="album-card__category">Bilingual</span>
+              <div class="album-card__title">Baking Class</div>
+              <div class="album-card__meta"><span class="album-card__count">14 photos</span><span>2025</span></div>
+            </div>
+          </a>
+
+          <a class="album-card album-card--bilingual" href="gallery-album.html?album=bilingual-penpal" data-category="bilingual">
+            <div class="album-card__cover"><span class="album-card__cover-emoji"><img src="images/2026IE/penpal2.jpg" alt=""></span></span></div>
+            <div class="album-card__info">
+              <span class="album-card__category">Bilingual</span>
+              <div class="album-card__title">Pen pal</div>
+              <div class="album-card__meta"><span class="album-card__count">7 photos</span><span>2026</span></div>
+            </div>
+          </a>
+
+          <!-- EVENTS -->
+          <a class="album-card album-card--events" href="gallery-album.html?album=events-halloween" data-category="events">
+            <div class="album-card__cover"><span class="album-card__cover-emoji"><img src="images/2025halloween/halloween7.JPG" alt=""></span></div>
+            <div class="album-card__info">
+              <span class="album-card__category">Events</span>
+              <div class="album-card__title">Halloween 2025</div>
+              <div class="album-card__meta"><span class="album-card__count">12 photos</span><span>Oct 2025</span></div>
+            </div>
+          </a>
+
+          <a class="album-card album-card--events" href="gallery-album.html?album=events-parentday" data-category="events">
+            <div class="album-card__cover"><span class="album-card__cover-emoji"><img src="images/Parent day/parentday1.JPG" alt=""></span></div>
+            <div class="album-card__info">
+              <span class="album-card__category">Events</span>
+              <div class="album-card__title">Parent Day 2025</div>
+              <div class="album-card__meta"><span class="album-card__count">9 photos</span><span>Nov 2025</span></div>
+            </div>
+          </a>
+        
+          <a class="album-card album-card--events" href="gallery-album.html?album=events-christmas" data-category="events">
+            <div class="album-card__cover"><span class="album-card__cover-emoji"><img src="images/2025christmas/christmas7.jpeg" alt=""></span></div>
+            <div class="album-card__info">
+              <span class="album-card__category">Events</span>
+              <div class="album-card__title">Christmas 2025</div>
+              <div class="album-card__meta"><span class="album-card__count">13 photos</span><span>Dec 2025</span></div>
+            </div>
+          </a>
+
+          <a class="album-card album-card--events" href="gallery-album.html?album=events-openclass" data-category="events">
+            <div class="album-card__cover"><span class="album-card__cover-emoji"><img src="images/2025baking/baking" alt=""></span></div>
+            <div class="album-card__info">
+              <span class="album-card__category">Events</span>
+              <div class="album-card__title">Open Class 2025</div>
+              <div class="album-card__meta"><span class="album-card__count">📷 4 photos</span><span>2025</span></div>
+            </div>
+          </a>
+
+          <a class="album-card album-card--events" href="gallery-album.html?album=events-exchange" data-category="events">
+            <div class="album-card__cover"><span class="album-card__cover-emoji"><img src="images/2026IE/exchange1.JPG" alt=""></span></div>
+            <div class="album-card__info">
+              <span class="album-card__category">Events</span>
+              <div class="album-card__title">International Exchange 2026</div>
+              <div class="album-card__meta"><span class="album-card__count">8 photos</span><span>June 2026</span></div>
+            </div>
+          </a>
+
+          <a class="album-card album-card--events" href="gallery-album.html?album=events-graduation" data-category="events">
+            <div class="album-card__cover"><span class="album-card__cover-emoji"><img src="images/2026graduation/graduation1.JPG" alt=""></span></div>
+            <div class="album-card__info">
+              <span class="album-card__category">Events</span>
+              <div class="album-card__title">Graduation Ceremony 2026</div>
+              <div class="album-card__meta"><span class="album-card__count">9 photos</span><span>June 2026</span></div>
+            </div>
+          </a>
+
+          <!-- SPORTS -->
+
+          <a class="album-card album-card--sports" href="gallery-album.html?album=sports-day" data-category="sports">
+            <div class="album-card__cover"><span class="album-card__cover-emoji"><img src="images/PE/sport Day/sport1.JPG" alt=""></span></div>
+            <div class="album-card__info">
+              <span class="album-card__category">Sports</span>
+              <div class="album-card__title">Sport Day</div>
+              <div class="album-card__meta"><span class="album-card__count">8 photos</span><span>2024</span></div>
+            </div>
+          </a>
+
+          <a class="album-card album-card--sports" href="gallery-album.html?album=jump-rope" data-category="sports">
+            <div class="album-card__cover"><span class="album-card__cover-emoji"><img src="images/PE/jump2.JPG" alt=""></span></div>
+            <div class="album-card__info">
+              <span class="album-card__category">Sports</span>
+              <div class="album-card__title">Jump Rope Competition</div>
+              <div class="album-card__meta"><span class="album-card__count">4 photos</span><span>2026</span></div>
+            </div>
+          </a>
+
+          <a class="album-card album-card--sports" href="gallery-album.html?album=sports-pe" data-category="sports">
+            <div class="album-card__cover"><span class="album-card__cover-emoji"><img src="images/PE/pe3.jpg" alt=""></span></div>
+            <div class="album-card__info">
+              <span class="album-card__category">Sports</span>
+              <div class="album-card__title">PE</div>
+              <div class="album-card__meta"><span class="album-card__count">9 photos</span><span>2025–2026</span></div>
+            </div>
+          </a>
+
+          <!-- FIELD TRIPS -->
+          <a class="album-card album-card--fieldtrip" href="gallery-album.html?album=trip-mrt" data-category="fieldtrip">
+            <div class="album-card__cover"><span class="album-card__cover-emoji"><img src="images/2026IE/mrt2.jpeg" alt=""></span></div>
+            <div class="album-card__info">
+              <span class="album-card__category">Field trip</span>
+              <div class="album-card__title">Airport MRT Adventure</div>
+              <div class="album-card__meta"><span class="album-card__count">2 photos</span><span>2025</span></div>
+            </div>
+          </a>
+
+          <a class="album-card album-card--fieldtrip" href="gallery-album.html?album=trip-busstation" data-category="fieldtrip">
+            <div class="album-card__cover"><span class="album-card__cover-emoji"><img src="images/2026IE/bus1.jpeg" alt=""></span></div>
+            <div class="album-card__info">
+              <span class="album-card__category">Field trip</span>
+              <div class="album-card__title">Bus Station Adventure</div>
+              <div class="album-card__meta"><span class="album-card__count">1 photo</span><span>2025</span></div>
+            </div>
+          </a>
+
+          <a class="album-card album-card--fieldtrip" href="gallery-album.html?album=trip-supermarket" data-category="fieldtrip">
+            <div class="album-card__cover"><span class="album-card__cover-emoji"><img src="images/2026IE/shopping2.jpeg" alt=""></span></div>
+            <div class="album-card__info">
+              <span class="album-card__category">Field trip</span>
+              <div class="album-card__title">Shopping Adventure</div>
+              <div class="album-card__meta"><span class="album-card__count">2 photos</span><span>2025</span></div>
+            </div>
+          </a>
+
+        </div><!-- end .album-grid -->
+      </div>
+    </section>
+
+    <!-- ── CTA STRIP ── -->
+    <section class="cta-strip" aria-label="Explore more">
+      <div class="container cta-strip__inner">
+        <div class="cta-strip__item fade-in">
+          <div class="cta-strip__icon" aria-hidden="true">📰</div>
+          <div><h4>News &amp; events</h4><p>Read the stories behind the photos.</p></div>
+          <a href="news.html" class="btn btn-outline">View news</a>
+        </div>
+        <div class="cta-strip__divider" aria-hidden="true"></div>
+        <div class="cta-strip__item fade-in">
+          <div class="cta-strip__icon" aria-hidden="true">📍</div>
+          <div><h4>Visit us</h4><p>Come see the campus in person.</p></div>
+          <a href="visit.html" class="btn btn-outline">Get directions</a>
+        </div>
+        <div class="cta-strip__divider" aria-hidden="true"></div>
+        <div class="cta-strip__item fade-in">
+          <div class="cta-strip__icon" aria-hidden="true">✉️</div>
+          <div><h4>Contact us</h4><p>Questions about the school? We reply in English.</p></div>
+          <a href="contact.html" class="btn btn-outline">Get in touch</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <div class="footer__logo-box" aria-hidden="true"><img src="images/History/logo.png" alt=""></div>
+            <div>
+              <div class="footer__school-name">Qing Pu Elementary School</div>
+              <div class="footer__school-zh">桃園市中壢區青埔國民小學</div>
+            </div>
+          </div>
+          <p class="footer__desc">A bilingual elementary school in Taoyuan, Taiwan. Inspiring hope, happiness, and a sense of achievement in every student since 1946.</p>
+        </div>
+        <div>
+          <p class="footer__col-title">Pages</p>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About the school</a></li>
+            <li><a href="bilingual.html">Bilingual education</a></li>
+            <li><a href="teachers.html">Bilingual teachers</a></li>
+            <li><a href="news.html">News &amp; events</a></li>
+            <li><a href="gallery.html">Photo gallery</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">More</p>
+          <ul class="footer__links">
+            <li><a href="visit.html">Visit us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener">Main website (中文)</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Contact</p>
+          <div class="footer__contact-item"><span class="footer__contact-icon" aria-hidden="true">📍</span><span>No. 122, Section 2, Qingpu Road, Zhongli District, Taoyuan City, Taiwan</span></div>
+          <div class="footer__contact-item"><span class="footer__contact-icon" aria-hidden="true">☎️</span><span>03 - 4531626</span></div>
+          <div class="footer__contact-item"><span class="footer__contact-icon" aria-hidden="true">✉️</span><span>cfc224@gmail.com</span></div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2026 Qing Pu Elementary School · Taoyuan, Taiwan · All rights reserved.</p>
+        <div class="footer__bottom-links"><a href="#">Sitemap</a><a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener">中文網站</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Filter albums by category
+    const filterBtns = document.querySelectorAll('.album-filter__btn');
+    const albumCards = document.querySelectorAll('.album-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        albumCards.forEach(card => {
+          const match = filter === 'all' || card.dataset.category === filter;
+          card.hidden = !match;
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Qing Pu Elementary School — a bilingual elementary school near THSR Taoyuan Station, nurturing global citizens in Taoyuan, Taiwan.">
+  <title>Qing Pu Elementary School — Taoyuan, Taiwan</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages/home.css">
+  <link rel="stylesheet" href="css/playful-theme.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="container navbar__inner">
+      <a href="index.html" class="navbar__logo" aria-label="Qing Pu Elementary School — home">
+        <div class="navbar__logo-img" aria-hidden="true"><img src="images/History/logo.png" alt=""></div>
+        <div class="navbar__logo-text">
+          <span class="navbar__name">Qing Pu Elementary School</span>
+          <span class="navbar__sub">青埔國小 · Taoyuan, Taiwan</span>
+        </div>
+      </a>
+      <ul class="navbar__links" role="list">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="bilingual.html">Bilingual</a></li>
+        <li><a href="teachers.html">Teachers</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="visit.html">Visit</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener" class="navbar__lang">🇹🇼 中文</a>
+      <button class="navbar__toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="navbar__mobile" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="bilingual.html">Bilingual education</a>
+      <a href="teachers.html">Bilingual teachers</a>
+      <a href="news.html">News</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="visit.html">Visit us</a>
+      <a href="contact.html">Contact</a>
+      <div class="navbar__mobile-lang">
+        <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener">🇹🇼 View Chinese website →</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <main id="main">
+
+    <!-- ============================================================
+         HERO — full-width with animated tagline
+         ============================================================ -->
+    <section class="hero" aria-label="School introduction">
+      <div class="hero__bg" aria-hidden="true"></div>
+
+      <!-- Decorative paper planes -->
+      <div class="hero__planes" aria-hidden="true">
+        <svg class="hero__plane hero__plane--1" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 40 L72 8 L56 40 L72 72 Z" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M4 40 L56 40" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="4 3"/>
+        </svg>
+        <svg class="hero__plane hero__plane--2" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 30 L54 6 L42 30 L54 54 Z" fill="rgba(240,147,0,0.08)" stroke="rgba(240,147,0,0.15)" stroke-width="1" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <div class="hero__eyebrow">
+            <span class="hero__dot" aria-hidden="true"></span>
+            Bilingual Elementary School · Taoyuan, Taiwan
+          </div>
+          <h1 class="hero__title">
+            <span class="hero__title-line">Hope.</span>
+            <span class="hero__title-line hero__title-line--2">Happiness.</span>
+            <span class="hero__title-line hero__title-line--3">Achievement.</span>
+          </h1>
+          <p class="hero__desc">
+            在青埔，遇見更好的自己 — Discovering a Better Self in Qingpu.<br>
+            A modern bilingual school near THSR Taoyuan Station, inspiring young
+            learners to reach beyond borders since 1946.
+          </p>
+          <div class="hero__actions">
+            <a href="bilingual.html" class="btn btn-primary">Our bilingual programme</a>
+            <a href="about.html" class="btn btn-ghost">About the school</a>
+          </div>
+        </div>
+
+        <!-- Hero quick-info card -->
+        <div class="hero__card">
+          <div class="hero__card-item">
+            <span class="hero__card-icon">📅</span>
+            <div>
+              <strong>School year</strong>
+              <span id="schoolYearLabel">September – June</span>
+            </div>
+          </div>
+          <div class="hero__card-divider" aria-hidden="true"></div>
+          <div class="hero__card-item">
+            <span class="hero__card-icon">🌐</span>
+            <div>
+              <strong>Bilingual programme</strong>
+              <span>Grade 1 – 6</span>
+            </div>
+          </div>
+          <div class="hero__card-divider" aria-hidden="true"></div>
+          <div class="hero__card-item">
+            <span class="hero__card-icon">🚄</span>
+            <div>
+              <strong>THSR Taoyuan</strong>
+              <span>5 minutes away</span>
+            </div>
+          </div>
+          <div class="hero__card-divider" aria-hidden="true"></div>
+          <div class="hero__card-item">
+            <span class="hero__card-icon">👩‍🏫</span>
+            <div>
+              <strong>Teaching team</strong>
+              <span>23 bilingual teachers</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── STATS STRIP ── -->
+    <section class="stats-strip" aria-label="School at a glance">
+      <div class="container">
+        <ul class="stats-strip__list" role="list">
+          <li class="stats-strip__item"><span class="stats-strip__num">1946</span><span class="stats-strip__label">Founded</span></li>
+          <li class="stats-strip__item"><span class="stats-strip__num">Gr. 1–6</span><span class="stats-strip__label">Grade levels</span></li>
+          <li class="stats-strip__item"><span class="stats-strip__num">23</span><span class="stats-strip__label">Bilingual teachers</span></li>
+          <li class="stats-strip__item"><span class="stats-strip__num">5</span><span class="stats-strip__label">Foreign teachers</span></li>
+          <li class="stats-strip__item"><span class="stats-strip__num">THSR</span><span class="stats-strip__label">5 min from station</span></li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         MAIN CONTENT — two columns: left wide, right sidebar
+         ============================================================ -->
+    <section class="section home-layout" aria-label="School news and highlights">
+      <div class="container home-layout__inner">
+
+        <!-- ── LEFT COLUMN ── -->
+        <div class="home-main">
+
+          <!-- HONOURS BOARD -->
+          <div class="home-block fade-in" aria-labelledby="honours-heading">
+            <div class="home-block__header">
+              <h2 id="honours-heading" class="home-block__title">
+                <span aria-hidden="true">🏆</span> Honours board
+                <span class="home-block__title-zh">青埔榮譽榜</span>
+              </h2>
+              <a href="news.html" class="home-block__more">View all →</a>
+            </div>
+            <ul class="honours-list" role="list">
+              <li class="honours-item">
+                <span class="honours-item__icon honours-item__icon--trophy" aria-hidden="true">🏆</span>
+                <div class="honours-item__text">
+                  <p>Student Chen Xin-Ru (Class 509) won <strong>1st place</strong> in the Taoyuan City Health Promotion School Art Competition — Poster Design, Upper Elementary division.</p>
+                  <time class="honours-item__date" datetime="2026-06">June 2026</time>
+                </div>
+              </li>
+              <li class="honours-item">
+                <span class="honours-item__icon honours-item__icon--cup" aria-hidden="true">🥇</span>
+                <div class="honours-item__text">
+                  <p>Teachers and students excelled at the <strong>Zhongli District Language Competition</strong> (Year 115), achieving outstanding results across multiple categories.</p>
+                  <time class="honours-item__date" datetime="2026-05">May 2026</time>
+                </div>
+              </li>
+              <li class="honours-item">
+                <span class="honours-item__icon honours-item__icon--medal" aria-hidden="true">🥈</span>
+                <div class="honours-item__text">
+                  <p>Qing Pu won <strong>double champion</strong> at the 66th Taoyuan City Elementary &amp; Secondary School Science Exhibition — Earth Science and Life &amp; Applied Science — and advances to the national competition.</p>
+                  <time class="honours-item__date" datetime="2026-04">Apr 2026</time>
+                </div>
+              </li>
+              <li class="honours-item">
+                <span class="honours-item__icon honours-item__icon--cert" aria-hidden="true">🎨</span>
+                <div class="honours-item__text">
+                  <p>Multiple students selected for the <strong>56th World Children's Art Exhibition</strong> national finals, representing Taoyuan City.</p>
+                  <time class="honours-item__date" datetime="2026-03">Mar 2026</time>
+                </div>
+              </li>
+              <li class="honours-item">
+                <span class="honours-item__icon honours-item__icon--trophy" aria-hidden="true">🥇</span>
+                <div class="honours-item__text">
+                  <p>Students won <strong>Gold Medal</strong> representing Taoyuan at the Year 114 Creative Technology Education Competition — Information Technology division.</p>
+                  <time class="honours-item__date" datetime="2026-03">Mar 2026</time>
+                </div>
+              </li>
+              <li class="honours-item">
+                <span class="honours-item__icon honours-item__icon--medal" aria-hidden="true">🎤</span>
+                <div class="honours-item__text">
+                  <p>Student Dai Guang-Xin (Class 504) won <strong>3rd place</strong> at the Taoyuan City Year 115 English Competition — Story Telling, Group C.</p>
+                  <time class="honours-item__date" datetime="2026-02">Feb 2026</time>
+                </div>
+              </li>
+              <li class="honours-item">
+                <span class="honours-item__icon honours-item__icon--trophy" aria-hidden="true">🌍</span>
+                <div class="honours-item__text">
+                  <p>Qing Pu teacher-student team won <strong>Gold Medal</strong> at the 2026 IEYI World Youth Invention Exhibition — Taiwan Selection.</p>
+                  <time class="honours-item__date" datetime="2026-01">Jan 2026</time>
+                </div>
+              </li>
+              <li class="honours-item">
+                <span class="honours-item__icon honours-item__icon--cup" aria-hidden="true">🎻</span>
+                <div class="honours-item__text">
+                  <p>String orchestra students earned <strong>Excellent Award</strong> at the National Student Music Competition — String Ensemble, Elementary Group B.</p>
+                  <time class="honours-item__date" datetime="2026-01">Jan 2026</time>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- LATEST NEWS -->
+          <div class="home-block fade-in" aria-labelledby="news-heading">
+            <div class="home-block__header">
+              <h2 id="news-heading" class="home-block__title">
+                <span aria-hidden="true">📰</span> Latest news
+                <span class="home-block__title-zh">最新消息</span>
+              </h2>
+              <a href="news.html" class="home-block__more">View all →</a>
+            </div>
+            <div class="home-news-grid">
+
+              <article class="home-news-card fade-in">
+                <div class="home-news-card__img-wrap">
+                  <div class="home-news-card__img-ph" aria-hidden="true">🌍</div>
+                </div>
+                <div class="home-news-card__body">
+                  <div class="home-news-card__meta">
+                    <span class="badge badge-orange">Event</span>
+                    <time class="home-news-date" datetime="2026-06-05">Jun 5, 2026</time>
+                  </div>
+                  <h3 class="home-news-card__title">End-of-year International Education Showcase — Grades 4–6</h3>
+                  <p class="home-news-card__excerpt">Students presented bilingual projects to families — from global water access posters to documentary films about Taoyuan's transport links.</p>
+                  <a href="news.html" class="home-news-card__link">Read more →</a>
+                </div>
+              </article>
+
+              <article class="home-news-card fade-in">
+                <div class="home-news-card__img-wrap">
+                  <div class="home-news-card__img-ph" aria-hidden="true">🔬</div>
+                </div>
+                <div class="home-news-card__body">
+                  <div class="home-news-card__meta">
+                    <span class="badge badge-green">Award</span>
+                    <time class="home-news-date" datetime="2026-05-18">May 18, 2026</time>
+                  </div>
+                  <h3 class="home-news-card__title">Three prizes at Taoyuan Bilingual Science Competition</h3>
+                  <p class="home-news-card__excerpt">Our Grade 5 and 6 science teams brought home gold, silver, and a special jury prize — presenting their research entirely in English.</p>
+                  <a href="news.html" class="home-news-card__link">Read more →</a>
+                </div>
+              </article>
+
+              <article class="home-news-card fade-in">
+                <div class="home-news-card__img-wrap">
+                  <div class="home-news-card__img-ph" aria-hidden="true">🚇</div>
+                </div>
+                <div class="home-news-card__body">
+                  <div class="home-news-card__meta">
+                    <span class="badge badge-purple">Field trip</span>
+                    <time class="home-news-date" datetime="2026-04-22">Apr 22, 2026</time>
+                  </div>
+                  <h3 class="home-news-card__title">Grade 3 explores the Airport MRT — in English</h3>
+                  <p class="home-news-card__excerpt">Students navigated Taoyuan Airport MRT from A18 to A1, asking questions in English and writing bilingual travel journals on the way back.</p>
+                  <a href="news.html" class="home-news-card__link">Read more →</a>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+          <!-- SCHOOL CALENDAR -->
+          <div class="home-block fade-in" aria-labelledby="calendar-heading">
+            <div class="home-block__header">
+              <h2 id="calendar-heading" class="home-block__title">
+                <span aria-hidden="true">📅</span> School calendar
+                <span class="home-block__title-zh">行事曆</span>
+              </h2>
+            </div>
+            <div class="calendar-embed">
+              <iframe
+                src="https://calendar.google.com/calendar/embed?height=400&wkst=1&bgcolor=%23ffffff&ctz=Asia%2FTaipei&src=Y3Bwc2NhbGVuZGFyQG1haWwuY3Bwcy50eWMuZWR1LnR3&src=emgudGFpd2FuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%231a4f7a&color=%230B8043&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0"
+                title="Qing Pu Elementary School calendar"
+                width="100%"
+                height="400"
+                style="border:0;"
+                allowfullscreen
+                loading="lazy"
+                aria-label="Qing Pu Elementary School Google Calendar">
+              </iframe>
+            </div>
+          </div>
+
+        </div><!-- end .home-main -->
+
+
+        <!-- ── RIGHT SIDEBAR ── -->
+        <aside class="home-sidebar" aria-label="Quick links and information">
+
+          <!-- Quick links -->
+          <div class="sidebar-panel fade-in">
+            <h3 class="sidebar-panel__title">Quick links</h3>
+            <ul class="quicklink-list" role="list">
+              <li>
+                <a href="bilingual.html" class="quicklink-item">
+                  <span class="quicklink-item__icon" style="background:var(--green-light);">🌐</span>
+                  <span>Bilingual programme</span>
+                  <span class="quicklink-item__arrow">›</span>
+                </a>
+              </li>
+              <li>
+                <a href="teachers.html" class="quicklink-item">
+                  <span class="quicklink-item__icon" style="background:var(--navy-light);">👩‍🏫</span>
+                  <span>Meet the teachers</span>
+                  <span class="quicklink-item__arrow">›</span>
+                </a>
+              </li>
+              <li>
+                <a href="gallery.html" class="quicklink-item">
+                  <span class="quicklink-item__icon" style="background:var(--purple-light);">📸</span>
+                  <span>Photo gallery</span>
+                  <span class="quicklink-item__arrow">›</span>
+                </a>
+              </li>
+              <li>
+                <a href="visit.html" class="quicklink-item">
+                  <span class="quicklink-item__icon" style="background:var(--orange-light);">📍</span>
+                  <span>How to get here</span>
+                  <span class="quicklink-item__arrow">›</span>
+                </a>
+              </li>
+              <li>
+                <a href="contact.html" class="quicklink-item">
+                  <span class="quicklink-item__icon" style="background:var(--green-light);">✉️</span>
+                  <span>Contact us</span>
+                  <span class="quicklink-item__arrow">›</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener" class="quicklink-item">
+                  <span class="quicklink-item__icon" style="background:#f0f0f0;">🇹🇼</span>
+                  <span>Chinese website</span>
+                  <span class="quicklink-item__arrow">›</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Bilingual teachers teaser -->
+          <div class="sidebar-panel sidebar-panel--navy fade-in">
+            <div class="sidebar-teachers">
+              <div class="sidebar-teachers__avatars" aria-hidden="true">
+                <div class="sidebar-teachers__av" style="background:var(--orange);">C</div>
+                <div class="sidebar-teachers__av" style="background:var(--green);">A</div>
+                <div class="sidebar-teachers__av" style="background:var(--purple);">B</div>
+                <div class="sidebar-teachers__av" style="background:#0e8fa3;">S</div>
+                <div class="sidebar-teachers__av sidebar-teachers__av--more">+19</div>
+              </div>
+              <h3 class="sidebar-teachers__title">23 bilingual teachers</h3>
+              <p class="sidebar-teachers__desc">18 local + 5 foreign teachers from USA, South Africa &amp; Philippines</p>
+              <a href="teachers.html" class="btn btn-ghost" style="width:100%;justify-content:center;margin-top:var(--sp-4);">Meet the team →</a>
+            </div>
+          </div>
+
+          <!-- School journal -->
+          <div class="sidebar-panel fade-in">
+            <h3 class="sidebar-panel__title">📖 School journal</h3>
+            <div class="journal-mini-card">
+              <div class="journal-mini-card__cover" aria-hidden="true">
+                <!--
+                  Replace with real cover:
+                  <img src="images/journal-cover.png" alt="Qingpu School Journal cover">
+                -->
+                <span>📰</span>
+                <p>青埔兒童</p>
+              </div>
+              <div class="journal-mini-card__info">
+                <p class="journal-mini-card__title">Qingpu Children's Journal</p>
+                <p class="journal-mini-card__desc">Latest issue — includes the Grade 5 &amp; 6 English column.</p>
+              </div>
+            </div>
+            <div style="text-align:center; margin-top:var(--sp-4);">
+              <a href="bilingual.html#journal" class="btn btn-outline btn-sm" style="display:inline-block;">Read English column</a>
+            </div>
+          </div>
+
+          <!-- Student life teaser -->
+          <div class="sidebar-panel fade-in">
+            <h3 class="sidebar-panel__title">🏃 Beyond the classroom</h3>
+            <p class="sidebar-panel__desc">
+              Qing Pu is known for competitive track &amp; field, plus a music club
+              (running since 2023) for wind and string instruments.
+            </p>
+            <a href="about.html#student-life" class="btn btn-outline btn-sm" style="margin-top:var(--sp-3);width:100%;justify-content:center;">
+              Learn more →
+            </a>
+          </div>
+
+          <!-- Lunch info link -->
+          <div class="sidebar-panel fade-in">
+            <h3 class="sidebar-panel__title">🍱 Today's lunch</h3>
+            <p class="sidebar-panel__desc">
+              The school serves nutritious lunch daily using locally sourced ingredients.
+              Allergen information is posted on the school's Chinese website.
+            </p>
+            <a href="https://www.cpps.tyc.edu.tw/modules/tad_lunch3/index.php" target="_blank" rel="noopener" class="btn btn-outline btn-sm" style="margin-top:var(--sp-3);width:100%;justify-content:center;">
+              View lunch menu (中文) →
+            </a>
+          </div>
+
+          <!-- Air quality widget -->
+          <div class="sidebar-panel fade-in">
+            <h3 class="sidebar-panel__title">💨 Air quality — Zhongli</h3>
+            <div class="aqi-widget">
+              <div class="aqi-widget__score aqi-widget__score--good">
+                <span class="aqi-widget__num">~46</span>
+                <span class="aqi-widget__label">Good</span>
+              </div>
+              <p class="aqi-widget__desc">Air quality is satisfactory. All outdoor activities can proceed normally.</p>
+              <a href="https://aqicn.org/city/taiwan/jhongli/" target="_blank" rel="noopener" class="aqi-widget__link">Live AQI data →</a>
+            </div>
+          </div>
+
+        </aside>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         BILINGUAL PROGRAMME OVERVIEW
+         ============================================================ -->
+    <section class="section bg-white" aria-labelledby="bilingual-heading">
+      <div class="container">
+        <div class="section-header centered">
+          <p class="eyebrow">🌐 English education</p>
+          <h2 id="bilingual-heading">Bilingual programmes by grade</h2>
+          <p>Following Taiwan's 2030 Bilingual Nation policy, we teach core subjects in both English and Mandarin across all six grades.</p>
+        </div>
+
+        <div class="programs-grid">
+          <div class="program-card fade-in">
+            <div class="program-card__grade">Gr. 1–2</div>
+            <h3 class="program-card__title">Bilingual Life Studies</h3>
+            <p class="program-card__desc">Children explore the world through bilingual stories, songs, and hands-on activities.</p>
+            <ul class="program-card__subjects">
+              <li>International Education</li>
+              <li>Life Studies (bilingual)</li>
+              <li>English conversation</li>
+            </ul>
+          </div>
+          <div class="program-card fade-in">
+            <div class="program-card__grade">Gr. 3–4</div>
+            <h3 class="program-card__title">All Together</h3>
+            <p class="program-card__desc">Integrated activities connect English to real-world community experiences.</p>
+            <ul class="program-card__subjects">
+              <li>All Together integrated activities</li>
+              <li>International Education</li>
+              <li>English reading &amp; writing</li>
+            </ul>
+          </div>
+          <div class="program-card fade-in">
+            <div class="program-card__grade">Gr. 5–6</div>
+            <h3 class="program-card__title">PE &amp; Art</h3>
+            <p class="program-card__desc">Specialist subjects taught by bilingual teachers — PE games, art critique, and creative projects, all in English.</p>
+            <ul class="program-card__subjects">
+              <li>PE &amp; Art (bilingual)</li>
+              <li>All Together — Integrative Activities</li>
+              <li>School journal English column</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="text-center mt-6">
+          <a href="bilingual.html" class="btn btn-secondary">See full curriculum →</a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         NEARBY HIGHLIGHTS
+         ============================================================ -->
+    <section class="section" aria-labelledby="nearby-heading">
+      <div class="container">
+        <div class="section-header centered">
+          <p class="eyebrow">📍 Our neighbourhood</p>
+          <h2 id="nearby-heading">A school in the heart of new Taoyuan</h2>
+          <p>Qing Pu is surrounded by landmarks that connect our students to the wider world every day.</p>
+        </div>
+        <div class="grid-4 nearby-grid">
+          <div class="nearby-card fade-in">
+            <div class="nearby-card__icon" style="background:var(--orange-light); color:var(--orange-dark);">🚄</div>
+            <h4>THSR Taoyuan</h4>
+            <p>High-speed rail station — 5 minutes away</p>
+          </div>
+          <div class="nearby-card fade-in">
+            <div class="nearby-card__icon" style="background:var(--purple-light); color:#4840a8;">🚇</div>
+            <h4>Airport MRT A18</h4>
+            <p>Direct connection to Taoyuan International Airport</p>
+          </div>
+          <div class="nearby-card fade-in">
+            <div class="nearby-card__icon" style="background:var(--green-light); color:#1a6b4f;">🎨</div>
+            <h4>Museum of Art</h4>
+            <p>Taoyuan Museum of Art — walking distance</p>
+          </div>
+          <div class="nearby-card fade-in">
+            <div class="nearby-card__icon" style="background:var(--navy-light); color:var(--navy);">⚾</div>
+            <h4>Baseball Stadium</h4>
+            <p>Taoyuan International Baseball Stadium nearby</p>
+          </div>
+          <div class="nearby-card fade-in">
+            <div class="nearby-card__icon" style="background:var(--orange-light); color:var(--orange-dark);">🛍️</div>
+            <h4>Gloria Outlet</h4>
+            <p>Major outlet mall — minutes from school</p>
+          </div>
+          <div class="nearby-card fade-in">
+            <div class="nearby-card__icon" style="background:var(--navy-light); color:var(--navy);">🪑</div>
+            <h4>IKEA Taoyuan</h4>
+            <p>Large IKEA store in the Qingpu district</p>
+          </div>
+          <div class="nearby-card fade-in">
+            <div class="nearby-card__icon" style="background:var(--purple-light); color:#4840a8;">🐠</div>
+            <h4>Xpark Aquarium</h4>
+            <p>Popular aquarium — a favourite field trip destination</p>
+          </div>
+          <div class="nearby-card fade-in">
+            <div class="nearby-card__icon" style="background:var(--green-light); color:#1a6b4f;">🌳</div>
+            <h4>Parks &amp; green spaces</h4>
+            <p>Multiple parks and open spaces throughout the district</p>
+          </div>
+        </div>
+        <div class="text-center mt-6">
+          <a href="visit.html" class="btn btn-outline">How to get here</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <div class="footer__logo-box" aria-hidden="true"><img src="images/History/logo.png" alt=""></div>
+            <div>
+              <div class="footer__school-name">Qing Pu Elementary School</div>
+              <div class="footer__school-zh">桃園市中壢區青埔國民小學</div>
+            </div>
+          </div>
+          <p class="footer__desc">A bilingual elementary school in Taoyuan, Taiwan. Inspiring hope, happiness, and a sense of achievement in every student since 1946.</p>
+        </div>
+        <div>
+          <p class="footer__col-title">Pages</p>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About the school</a></li>
+            <li><a href="bilingual.html">Bilingual education</a></li>
+            <li><a href="teachers.html">Bilingual teachers</a></li>
+            <li><a href="news.html">News &amp; events</a></li>
+            <li><a href="gallery.html">Photo gallery</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">More</p>
+          <ul class="footer__links">
+            <li><a href="visit.html">Visit us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener">Main website (中文)</a></li>
+            <li><a href="http://163.30.130.236/bilingual/index.php" target="_blank" rel="noopener">Bilingual site</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Contact</p>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">📍</span>
+            <span>No. 122, Section 2, Qingpu Road, Zhongli District, Taoyuan City, Taiwan</span>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">☎️</span>
+            <span>03 - 4531626</span>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">📞</span>
+            <span>+ 886 3 4531626</span>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">🕘</span>
+            <span>Mon–Fri · 07:30–17:00</span>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">✉️</span>
+            <span>cfc224@gmail.com</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2026 Qing Pu Elementary School · Taoyuan, Taiwan · All rights reserved.</p>
+        <div class="footer__bottom-links">
+          <a href="#">Sitemap</a>
+          <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener">中文網站</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

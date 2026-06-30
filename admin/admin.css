@@ -1,0 +1,229 @@
+/* ============================================================
+   Qing Pu Elementary School — Admin panel styles
+   Loaded alongside ../css/style.css for shared variables (colors,
+   spacing, fonts, .btn classes) — this file adds admin-only layout.
+   ============================================================ */
+
+   .admin-body {
+    background: var(--bg);
+    min-height: 100vh;
+  }
+  
+  /* ── Login page ── */
+  .admin-login {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--sp-5);
+  }
+  
+  .admin-login__card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-6);
+    max-width: 360px;
+    width: 100%;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+  }
+  
+  .admin-login__logo {
+    font-size: 2.5rem;
+    margin-bottom: var(--sp-3);
+  }
+  
+  .admin-login__sub {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-bottom: var(--sp-5);
+  }
+  
+  .admin-login__form {
+    text-align: left;
+  }
+  
+  .admin-login__form label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: var(--sp-2);
+  }
+  
+  .admin-login__form input {
+    width: 100%;
+    padding: var(--sp-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+  }
+  
+  .admin-login__back {
+    display: inline-block;
+    margin-top: var(--sp-5);
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+  
+  .admin-error {
+    background: #fee2e2;
+    color: #991b1b;
+    padding: var(--sp-3);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    margin-bottom: var(--sp-4);
+  }
+  
+  /* ── Shared admin layout ── */
+  .admin-header {
+    background: var(--navy);
+    color: white;
+    padding: var(--sp-4) 0;
+  }
+  
+  .admin-header__inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 var(--sp-5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .admin-header__inner nav a {
+    color: rgba(255,255,255,0.85);
+    margin-left: var(--sp-5);
+    font-size: 0.875rem;
+  }
+  
+  .admin-header__inner nav a:hover {
+    color: white;
+  }
+  
+  .admin-main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: var(--sp-6) var(--sp-5);
+  }
+  
+  .admin-banner {
+    padding: var(--sp-3) var(--sp-4);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--sp-5);
+    font-size: 0.875rem;
+  }
+  
+  .admin-banner--success {
+    background: var(--green-light);
+    color: #1a6b4f;
+  }
+  
+  .admin-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--sp-5);
+    flex-wrap: wrap;
+    gap: var(--sp-3);
+  }
+  
+  .admin-toolbar h1 {
+    font-size: 1.5rem;
+  }
+  
+  /* ── Table ── */
+  .admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  
+  .admin-table th,
+  .admin-table td {
+    padding: var(--sp-3) var(--sp-4);
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+  
+  .admin-table th {
+    background: var(--bg);
+    font-weight: 600;
+  }
+  
+  .admin-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .admin-table__empty {
+    text-align: center;
+    color: var(--text-muted);
+    padding: var(--sp-6);
+  }
+  
+  .admin-table__actions a,
+  .admin-link-btn {
+    font-size: 0.85rem;
+    margin-right: var(--sp-3);
+  }
+  
+  .admin-link-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: var(--navy);
+    text-decoration: underline;
+    font-family: inherit;
+  }
+  
+  .admin-link-btn--danger {
+    color: #b91c1c;
+  }
+  
+  /* ── Form ── */
+  .admin-form {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-5);
+    max-width: 720px;
+  }
+  
+  .admin-form label {
+    display: block;
+    font-weight: 500;
+    font-size: 0.875rem;
+    margin-bottom: var(--sp-2);
+    margin-top: var(--sp-4);
+  }
+  
+  .admin-form input[type="text"],
+  .admin-form input[type="date"],
+  .admin-form select,
+  .admin-form textarea {
+    width: 100%;
+    padding: var(--sp-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    font-family: inherit;
+  }
+  
+  .admin-form textarea {
+    resize: vertical;
+  }
+  
+  .admin-form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-4);
+  }
+  
+  @media (max-width: 600px) {
+    .admin-form__row { grid-template-columns: 1fr; }
+  }

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="News article from Qing Pu Elementary School.">
+  <title id="page-title">Article — Qing Pu Elementary School</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages/about.css">
+  <link rel="stylesheet" href="css/pages/news-article.css">
+  <link rel="stylesheet" href="css/playful-theme.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="container navbar__inner">
+      <a href="index.html" class="navbar__logo" aria-label="Qing Pu Elementary School — home">
+        <div class="navbar__logo-img" aria-hidden="true">✈️</div>
+        <div class="navbar__logo-text">
+          <span class="navbar__name">Qing Pu Elementary School</span>
+          <span class="navbar__sub">青埔國小 · Taoyuan, Taiwan</span>
+        </div>
+      </a>
+      <ul class="navbar__links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="bilingual.html">Bilingual</a></li>
+        <li><a href="teachers.html">Teachers</a></li>
+        <li><a href="news.html" class="active">News</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="visit.html">Visit</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener" class="navbar__lang">🇹🇼 中文</a>
+      <button class="navbar__toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="navbar__mobile" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="bilingual.html">Bilingual education</a>
+      <a href="teachers.html">Bilingual teachers</a>
+      <a href="news.html">News</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="visit.html">Visit us</a>
+      <a href="contact.html">Contact</a>
+      <div class="navbar__mobile-lang">
+        <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener">🇹🇼 View Chinese website →</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <main id="main">
+
+    <!-- ── PAGE HERO — breadcrumb only, content fills in by JS ── -->
+    <section class="page-hero article-hero" aria-label="Article">
+      <div class="container page-hero__inner">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span aria-hidden="true">›</span>
+          <a href="news.html">News</a>
+          <span aria-hidden="true">›</span>
+          <span aria-current="page" id="breadcrumb-current">Article</span>
+        </nav>
+        <div class="article-hero__meta" id="article-meta">
+          <!-- badge + date filled in by JS -->
+        </div>
+        <h1 class="page-hero__title" id="article-title">Loading…</h1>
+        <p class="article-hero__sub" id="article-subtitle"></p>
+      </div>
+      <div class="page-hero__wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" fill="var(--bg)"/>
+        </svg>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         ARTICLE CONTENT — two columns: article + sidebar
+         ============================================================ -->
+    <section class="section" aria-label="Article content">
+      <div class="container article-layout">
+
+        <!-- ── LEFT: article body ── -->
+        <article class="article-body" id="article-body">
+
+          <div class="article-hero-img" id="article-hero-img" aria-hidden="true">
+            <span id="article-hero-emoji">📰</span>
+          </div>
+
+          <div class="article-content" id="article-content">
+            <!-- paragraphs filled in by JS -->
+          </div>
+
+          <!-- Tags -->
+          <div class="article-tags" id="article-tags"></div>
+
+          <!-- Share / back row -->
+          <div class="article-actions">
+            <a href="news.html" class="btn btn-outline">← Back to all news</a>
+          </div>
+
+          <!-- Prev / next navigation -->
+          <nav class="article-pager" aria-label="More articles">
+            <a href="#" class="article-pager__link article-pager__link--prev" id="article-prev" hidden>
+              <span class="article-pager__label">← Previous</span>
+              <span class="article-pager__title" id="article-prev-title"></span>
+            </a>
+            <a href="#" class="article-pager__link article-pager__link--next" id="article-next" hidden>
+              <span class="article-pager__label">Next →</span>
+              <span class="article-pager__title" id="article-next-title"></span>
+            </a>
+          </nav>
+
+        </article>
+
+
+        <!-- ── RIGHT: sidebar ── -->
+        <aside class="news-sidebar" aria-label="More from news">
+
+          <div class="sidebar-widget">
+            <h3 class="sidebar-widget__title">Related articles</h3>
+            <ul class="recent-list" id="related-articles" role="list">
+              <!-- filled in by JS -->
+            </ul>
+          </div>
+
+          <div class="sidebar-widget sidebar-widget--cta">
+            <p class="text-sm" style="color:rgba(255,255,255,0.75); margin-bottom: var(--sp-3);">
+              Want to read everything in Chinese too?
+            </p>
+            <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener" class="btn btn-ghost" style="width:100%; justify-content:center;">
+              Visit main school site 🇹🇼
+            </a>
+          </div>
+
+        </aside>
+
+      </div>
+    </section>
+
+
+    <!-- Fallback shown if no matching article id is found -->
+    <section class="section" id="article-not-found" hidden>
+      <div class="container text-center">
+        <div style="font-size:48px; margin-bottom: var(--sp-4);">📭</div>
+        <h2>Article not found</h2>
+        <p class="text-muted mt-4" style="margin-bottom: var(--sp-6);">
+          We couldn't find the article you're looking for. It may have been moved or removed.
+        </p>
+        <a href="news.html" class="btn btn-secondary">← Back to all news</a>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <div class="footer__logo-box" aria-hidden="true">✈️</div>
+            <div>
+              <div class="footer__school-name">Qing Pu Elementary School</div>
+              <div class="footer__school-zh">桃園市中壢區青埔國民小學</div>
+            </div>
+          </div>
+          <p class="footer__desc">A bilingual elementary school in Taoyuan, Taiwan. Inspiring hope, happiness, and a sense of achievement in every student since 1946.</p>
+        </div>
+        <div>
+          <p class="footer__col-title">Pages</p>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About the school</a></li>
+            <li><a href="bilingual.html">Bilingual education</a></li>
+            <li><a href="teachers.html">Bilingual teachers</a></li>
+            <li><a href="news.html">News &amp; events</a></li>
+            <li><a href="gallery.html">Photo gallery</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">More</p>
+          <ul class="footer__links">
+            <li><a href="visit.html">Visit us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener">Main website (中文)</a></li>
+            <li><a href="http://163.30.130.236/bilingual/index.php" target="_blank" rel="noopener">Bilingual site</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Contact</p>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">📍</span>
+            <span>No. 122, Sec. 2, Qingpu Rd., Qingpu Village, Zhongli Dist., Taoyuan City 320016</span>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">📞</span>
+            <span>(03) 453-1626</span>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">🕘</span>
+            <span>Mon–Fri · 07:30–17:00</span>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">✉️</span>
+            <span>cpps@ms.tyc.edu.tw</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2026 Qing Pu Elementary School · Taoyuan, Taiwan · All rights reserved.</p>
+        <div class="footer__bottom-links">
+          <a href="#">Sitemap</a>
+          <a href="https://www.cpps.tyc.edu.tw" target="_blank" rel="noopener">中文網站</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
