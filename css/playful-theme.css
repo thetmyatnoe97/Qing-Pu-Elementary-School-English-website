@@ -26,10 +26,15 @@ html { font-size: 118%; }
   --navy-dark:     #4358b8;
   --navy-light:    #eaedff;
 
-  /* ── GREEN replaces pink/rose everywhere ── */
-  --orange:        #3cb87a;   /* was #ff7f7f pink — now fresh green */
-  --orange-dark:   #2a9460;   /* was #e86060 — now deep green */
-  --orange-light:  #e2f7ed;   /* was #ffe8e8 — now mint tint */
+  /* ── GREEN accent replaces pink/rose everywhere ──
+     NOTE: previously reused the --orange/--orange-dark/--orange-light
+     variable names from style.css for these green values. That caused
+     every rule referencing var(--orange) after this file loads to
+     render green instead of orange, which is confusing to maintain.
+     Renamed to --accent / --accent-dark / --accent-light below. */
+  --accent:        #3cb87a;   /* was #ff7f7f pink — now fresh green */
+  --accent-dark:   #2a9460;   /* was #e86060 — now deep green */
+  --accent-light:  #e2f7ed;   /* was #ffe8e8 — now mint tint */
 
   /* Secondary greens & teal */
   --green:         #4ecba7;
@@ -87,9 +92,7 @@ h2 { font-size: clamp(28px, 4.5vw, 44px); font-weight: 800; color: var(--navy); 
 h3 { font-size: clamp(20px, 2.5vw, 27px); font-weight: 700; color: var(--navy); }
 h4 { font-size: 20px; font-weight: 700; color: var(--navy); }
 h5 { font-size: 19px; font-weight: 700; color: var(--navy); }
-p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
-.text-sm { font-size: 19px; }
-.text-xs { font-size: 19px; }
+p  { line-height: 1.8; color: var(--text-muted); }
 
 /* Eyebrow pill — green instead of orange/pink */
 .eyebrow {
@@ -130,7 +133,6 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
 
 .navbar__links a {
   color: var(--text-muted) !important;
-  font-size: 19px;
   font-weight: 700;
   border-radius: 20px;
   padding: 7px 14px;
@@ -145,19 +147,19 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
   color: var(--navy) !important;
   background: var(--navy-light) !important;
   box-shadow: none;
-  border-bottom: 3px solid var(--orange);  /* green underline */
+  border-bottom: 3px solid var(--accent);  /* green underline */
   border-radius: 20px 20px 0 0;
 }
 
 /* Language toggle — green tint */
 .navbar__lang {
-  background: var(--orange-light) !important;
-  border: 2px solid var(--orange) !important;
-  color: var(--orange-dark) !important;
+  background: var(--accent-light) !important;
+  border: 2px solid var(--accent) !important;
+  color: var(--accent-dark) !important;
   font-weight: 700;
 }
 .navbar__lang:hover {
-  background: var(--orange) !important;
+  background: var(--accent) !important;
   color: #fff !important;
 }
 
@@ -187,7 +189,6 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
   border: none;
   padding: 7px 14px;
   font: inherit;
-  font-size: 19px;
   font-weight: 700;
   color: var(--text-muted);
   cursor: pointer;
@@ -267,7 +268,6 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
   gap: 8px;
   padding: 9px 18px;
   color: var(--text);
-  font-size: 16px;
   font-weight: 600;
   text-decoration: none;
   white-space: nowrap;
@@ -287,14 +287,14 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
 
 .nav-dropdown li a:hover,
 .nav-dropdown li a:focus-visible {
-  background: var(--orange-light);
-  color: var(--orange-dark);
+  background: var(--accent-light);
+  color: var(--accent-dark);
   padding-left: 22px;
   outline: none;
 }
 
 .nav-dropdown li a:hover::before {
-  background: var(--orange);
+  background: var(--accent);
   transform: scale(1.4);
 }
 
@@ -331,6 +331,10 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
   position: relative;
 }
 
+/* .hero__bg is set to display:none below, which makes the grid-line
+   background rule for it in home.css dead code (never rendered). Hiding
+   it here rather than deleting it from home.css since that file is
+   shared/base styling; this comment documents why it's invisible. */
 .hero__bg { display: none; }
 
 .hero__planes { opacity: 0.25; filter: hue-rotate(60deg) saturate(1.5); }
@@ -365,11 +369,11 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
 .hero__title        { color: var(--navy) !important; font-weight: 900 !important; }
 .hero__title-line   { color: var(--navy) !important; }
 .hero__title-line--2 { color: var(--teal) !important; }       /* was purple/sky */
-.hero__title-line--3 { color: var(--orange) !important; }     /* green accent */
+.hero__title-line--3 { color: var(--accent) !important; }     /* green accent */
 
 .hero__desc { color: var(--text-muted) !important; font-size: 19px; }
 
-.hero__dot { background: var(--orange) !important; }
+.hero__dot { background: var(--accent) !important; }
 
 .hero__card {
   background: rgba(255,255,255,0.85) !important;
@@ -381,107 +385,23 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
 .hero__card-item span   { color: var(--text-muted) !important; }
 .hero__card-divider     { border-top-color: var(--border) !important; }
 
-/* ── Mascot ── */
-.hero__inner {
-  display: flex !important;
-  align-items: flex-end !important;
-  gap: 0 !important;
-  position: relative;
-}
-
-.hero__content {
-  flex: 1;
-  min-width: 0;
-}
-
-.hero__mascot {
-  flex-shrink: 0;
-  width: clamp(220px, 30vw, 400px);
-  align-self: flex-end;
-  margin-bottom: -4px;
-  pointer-events: none;
-  animation: mascotIn 0.7s 0.35s ease both;
-}
-
-.hero__mascot img {
-  width: 100%;
-  height: auto;
-  display: block;
-  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.15));
-}
-
-@keyframes mascotIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@media (max-width: 640px) {
-  .hero__mascot { display: none; }
-}
+/* NOTE: .hero__inner / .hero__content / .hero__mascot layout rules
+   (including the mascotIn keyframe) used to be duplicated here.
+   They've been removed — home-update.css is now the single source
+   of truth for the mascot layout, since it loads after this file. */
 
 /* ============================================================
    SCHOOL PHOTO BAND
    ============================================================ */
-.school-photo-band {
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-}
-
-.school-photo-band__img-wrap {
-  position: relative;
-  width: 100%;
-  max-height: 420px;
-  overflow: hidden;
-}
-
-.school-photo-band__img {
-  width: 100%;
-  height: 420px;
-  object-fit: cover;
-  object-position: center 40%;
-  display: block;
-  transition: transform 6s ease;
-}
-
-.school-photo-band:hover .school-photo-band__img {
-  transform: scale(1.03);
-}
-
-.school-photo-band__overlay {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  background: linear-gradient(to top, rgba(10,30,20,0.55) 0%, transparent 100%);
-  padding-bottom: 20px;
-}
-
-.school-photo-band__caption {
-  display: flex;
-  align-items: flex-end;
-  height: 80px;
-}
-
-.school-photo-band__caption-text {
-  color: rgba(255,255,255,0.88);
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  margin: 0;
-  padding: 0 0 4px;
-}
-
-@media (max-width: 768px) {
-  .school-photo-band__img      { height: 240px; }
-  .school-photo-band__img-wrap { max-height: 240px; }
-}
+/* NOTE: the full .school-photo-band rule set used to be duplicated
+   here verbatim. Removed — home-update.css is now the single source
+   of truth for the photo band, since it loads after this file. */
 
 /* ============================================================
    BUTTONS — pill, green primary
    ============================================================ */
 .btn {
   border-radius: 50px;
-  font-size: 18px;
   font-weight: 800;
   padding: 13px 28px;
   transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1),
@@ -493,13 +413,13 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
 
 /* Primary — green gradient */
 .btn-primary {
-  background: linear-gradient(135deg, var(--orange), #5dd49a) !important;
+  background: linear-gradient(135deg, var(--accent), #5dd49a) !important;
   border-color: transparent !important;
   box-shadow: 0 4px 14px rgba(58,158,95,0.38);
   color: #fff !important;
 }
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--orange-dark), var(--orange)) !important;
+  background: linear-gradient(135deg, var(--accent-dark), var(--accent)) !important;
   box-shadow: 0 6px 20px rgba(58,158,95,0.48);
 }
 
@@ -557,12 +477,10 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
   border-bottom: 3px dashed var(--border) !important;
 }
 .stats-strip__num {
-  font-size: 24px !important;
   font-weight: 900 !important;
-  color: var(--orange) !important;   /* green accent number */
+  color: var(--accent) !important;   /* green accent number */
 }
 .stats-strip__label {
-  font-size: 19px !important;
   font-weight: 700 !important;
   color: var(--text-muted) !important;
 }
@@ -582,24 +500,24 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
   border-bottom-color: var(--border) !important;
 }
 
-.home-block__title    { font-size: 18px !important; font-weight: 800 !important; color: var(--navy) !important; }
+.home-block__title    { font-weight: 800 !important; color: var(--navy) !important; }
 .home-block__more     { color: var(--navy) !important; font-weight: 700 !important; }
-.home-block__more:hover { color: var(--orange) !important; }
+.home-block__more:hover { color: var(--accent) !important; }
 
 /* Honours */
 .honours-item { border-bottom-color: var(--border) !important; }
-.honours-item:hover { background: var(--orange-light) !important; }
-.honours-item__text p      { font-size: 18px !important; color: var(--text-muted) !important; }
+.honours-item:hover { background: var(--accent-light) !important; }
+.honours-item__text p      { color: var(--text-muted) !important; }
 .honours-item__text strong { color: var(--navy) !important; font-weight: 800 !important; }
-.honours-item__date        { font-size: 18px !important; color: var(--text-light) !important; }
+.honours-item__date        { color: var(--text-light) !important; }
 
 /* News cards in home block */
 .home-block .home-news-card { border-right-color: var(--border) !important; }
-.home-block .home-news-card:hover { background: var(--orange-light) !important; }
-.home-block .home-news-card__title { font-size: 18px !important; font-weight: 800 !important; color: var(--navy) !important; }
-.home-block .home-news-card__excerpt { font-size: 19px !important; color: var(--text-muted) !important; }
+.home-block .home-news-card:hover { background: var(--accent-light) !important; }
+.home-block .home-news-card__title { font-weight: 800 !important; color: var(--navy) !important; }
+.home-block .home-news-card__excerpt { color: var(--text-muted) !important; }
 .home-block .home-news-date { color: var(--text-light) !important; }
-.home-block .home-news-card__link { color: var(--orange) !important; font-weight: 700 !important; }
+.home-block .home-news-card__link { color: var(--accent) !important; font-weight: 700 !important; }
 
 /* Sidebar panels */
 .sidebar-panel {
@@ -611,7 +529,6 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
 .sidebar-panel__title {
   color: var(--navy) !important;
   font-weight: 800 !important;
-  font-size: 18px !important;
   border-bottom-color: var(--border) !important;
 }
 
@@ -624,19 +541,18 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
   color: rgba(255,255,255,0.55) !important;
   border-bottom-color: rgba(255,255,255,0.12) !important;
 }
-.sidebar-teachers__title { color: #fff !important; font-size: 19px !important; font-weight: 800 !important; }
-.sidebar-teachers__desc  { color: rgba(255,255,255,0.65) !important; font-size: 19px !important; }
+.sidebar-teachers__title { color: #fff !important; font-weight: 800 !important; }
+.sidebar-teachers__desc  { color: rgba(255,255,255,0.65) !important; }
 
 /* Quick links */
 .quicklink-item {
-  font-size: 18px !important;
   font-weight: 700 !important;
   color: var(--text-muted) !important;
   border-radius: 12px !important;
 }
 .quicklink-item:hover {
-  background: var(--orange-light) !important;
-  color: var(--orange-dark) !important;
+  background: var(--accent-light) !important;
+  color: var(--accent-dark) !important;
 }
 
 /* ============================================================
@@ -653,13 +569,13 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
   box-shadow: var(--shadow-md) !important;
   transform: translateY(-5px) !important;
 }
-.program-card:nth-child(1) { border-top: 4px solid var(--orange) !important; }
+.program-card:nth-child(1) { border-top: 4px solid var(--accent) !important; }
 .program-card:nth-child(2) { border-top: 4px solid var(--teal) !important; }
 .program-card:nth-child(3) { border-top: 4px solid var(--navy) !important; }
 
-.program-card__title { font-size: 20px !important; font-weight: 800 !important; color: var(--navy) !important; }
-.program-card__desc  { font-size: 19px !important; color: var(--text-muted) !important; }
-.program-card__subjects li { font-size: 18px !important; color: var(--text-muted) !important; }
+.program-card__title { font-weight: 800 !important; color: var(--navy) !important; }
+.program-card__desc  { color: var(--text-muted) !important; }
+.program-card__subjects li { color: var(--text-muted) !important; }
 
 /* ============================================================
    NEARBY CARDS
@@ -674,10 +590,10 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
 .nearby-card:hover {
   box-shadow: var(--shadow-md) !important;
   transform: translateY(-5px) rotate(1deg) !important;
-  border-color: var(--orange) !important;
+  border-color: var(--accent) !important;
 }
-.nearby-card h4 { font-size: 18px !important; font-weight: 800 !important; color: var(--navy) !important; }
-.nearby-card p  { font-size: 18px !important; color: var(--text-muted) !important; }
+.nearby-card h4 { font-weight: 800 !important; color: var(--navy) !important; }
+.nearby-card p  { color: var(--text-muted) !important; }
 
 /* ============================================================
    SECTION HEADERS — green rainbow underline
@@ -688,7 +604,7 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
   display: block;
   height: 5px;
   border-radius: 3px;
-  background: linear-gradient(90deg, var(--orange), var(--yellow), var(--teal), var(--sky));
+  background: linear-gradient(90deg, var(--accent), var(--yellow), var(--teal), var(--sky));
   margin-top: 6px;
   animation: qp-pulse 3s ease-in-out infinite;
 }
@@ -697,13 +613,12 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
    BADGES
    ============================================================ */
 .badge {
-  font-size: 19px;
   font-weight: 800;
   padding: 4px 12px;
   border-radius: 20px;
 }
 .badge-navy   { background: var(--navy-light);   color: var(--navy); }
-.badge-orange { background: var(--orange-light);  color: var(--orange-dark); }
+.badge-orange { background: var(--accent-light);  color: var(--accent-dark); }
 .badge-green  { background: var(--green-light);   color: #1a8b6a; }
 .badge-purple { background: var(--sky-light);     color: #1a7ab0; }
 .badge-gray   { background: #f0fdf4; color: var(--text-muted); }
@@ -713,7 +628,7 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
    ============================================================ */
 .bg-white  { background: var(--bg-white) !important; }
 .bg-light  { background: var(--navy-light) !important; }
-.bg-orange-light { background: var(--orange-light) !important; }
+.bg-orange-light { background: var(--accent-light) !important; }
 
 .bg-navy {
   background: linear-gradient(135deg, #1e3d2f 0%, #3a9e5f 100%) !important;
@@ -740,7 +655,7 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
   padding: 0 var(--sp-7) !important;
 }
 
-.footer__school-name  { color: #1a3550 !important; font-weight: 800 !important; font-size: 18px !important; }
+.footer__school-name  { color: #1a3550 !important; font-weight: 800 !important; }
 .footer__school-zh    { color: #4a7090 !important; }
 .footer__logo-box     { background: rgba(58,158,95,0.12) !important; }
 .footer__desc         { color: #3a6080 !important; max-width: 340px !important; font-size: 16px !important; }
@@ -749,18 +664,18 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
 .footer__links a:hover { color: #1a3550 !important; }
 .footer__contact-item { color: #2a5070 !important; font-size: 16px !important; }
 .footer__contact-icon { color: #3a9e5f !important; }  /* green icon instead of red */
-.footer__contact-icon svg { display: inline-block; vertical-align: middle; opacity: 0.75; flex-shrink: 0; }
 .footer__bottom       { border-top: 2px solid rgba(91,160,210,0.25) !important; }
 .footer__copy         { color: #6a9ab8 !important; font-size: 15px !important; }
 .footer__bottom-links a { color: #3a7090 !important; font-size: 15px !important; }
 .footer__bottom-links a:hover { color: #1a3550 !important; }
 
+/* NOTE: .footer__contact-icon svg alignment rules used to be duplicated
+   here. Removed — home-update.css is now the single source of truth
+   for that, since it loads after this file. */
+
 /* ============================================================
    LAYOUT — wider container
    ============================================================ */
-:root { --container-max: 1320px; }
-.container { padding: 0 var(--sp-7) !important; max-width: 1320px !important; }
-
 .home-layout__inner {
   grid-template-columns: 1fr 360px !important;
   gap: var(--sp-8) !important;
@@ -796,7 +711,7 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
    ============================================================ */
 .timeline__dot { background: var(--navy) !important; }
 .timeline__item:hover .timeline__dot:not(.timeline__dot--current) {
-  background: var(--orange) !important;
+  background: var(--accent) !important;
 }
 
 .pillar-card--center {
@@ -813,8 +728,8 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
               box-shadow 0.25s ease, background 0.2s ease, border-color 0.2s ease !important;
 }
 .pillar-card:not(.pillar-card--center):hover {
-  background: var(--orange-light) !important;
-  border-color: var(--orange) !important;
+  background: var(--accent-light) !important;
+  border-color: var(--accent) !important;
   transform: translateY(-5px) scale(1.02) !important;
   box-shadow: var(--shadow-md) !important;
 }
@@ -837,22 +752,21 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
 .curriculum-table thead th {
   color: #fff !important;
   font-weight: 800 !important;
-  font-size: 18px !important;
 }
 
 /* ============================================================
    NEWS PAGE
    ============================================================ */
 .filter-btn.active {
-  background: var(--orange) !important;
-  border-color: var(--orange) !important;
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
   color: #fff !important;
   font-weight: 800 !important;
   border-radius: 50px !important;
 }
 .pagination__page.active {
-  background: var(--orange) !important;
-  border-color: var(--orange) !important;
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
   color: #fff !important;
   font-weight: 800 !important;
 }
@@ -872,8 +786,8 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
 }
 .news-card:hover { transform: translateY(-6px) rotate(-0.4deg) !important; box-shadow: var(--shadow-md) !important; }
 .news-card__title   { font-weight: 800 !important; color: var(--navy) !important; }
-.news-card__excerpt { color: var(--text-muted) !important; font-size: 19px !important; }
-.news-card__link    { color: var(--orange) !important; font-weight: 700 !important; }
+.news-card__excerpt { color: var(--text-muted) !important; }
+.news-card__link    { color: var(--accent) !important; font-weight: 700 !important; }
 .news-date          { color: var(--text-light) !important; }
 
 .news-featured {
@@ -884,8 +798,8 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
 
 /* Gallery */
 .gallery-filter__btn.active {
-  background: var(--orange) !important;
-  border-color: var(--orange) !important;
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
   color: #fff !important;
   font-weight: 800 !important;
 }
@@ -897,24 +811,24 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
   background: linear-gradient(135deg, #1e3d2f, #3a9e5f) !important;
   border-radius: var(--radius-lg) !important;
 }
-.teachers-stats__num   { color: #fff !important; font-size: 24px !important; font-weight: 900 !important; }
-.teachers-stats__label { color: rgba(255,255,255,0.65) !important; font-size: 19px !important; font-weight: 700 !important; }
+.teachers-stats__num   { color: #fff !important; font-weight: 900 !important; }
+.teachers-stats__label { color: rgba(255,255,255,0.65) !important; font-weight: 700 !important; }
 
 .teacher-filter__btn.active {
-  background: var(--orange) !important;
-  border-color: var(--orange) !important;
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
   color: #fff !important;
   font-weight: 800 !important;
   border-radius: 50px !important;
 }
-.teacher-card__name { color: var(--navy) !important; font-size: 19px !important; font-weight: 800 !important; }
+.teacher-card__name { color: var(--navy) !important; font-weight: 800 !important; }
 
 .foreign-card__header {
   background: linear-gradient(135deg, #1e3d2f, #4ecba7) !important;
   border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
 }
-.foreign-card__name    { color: #fff !important; font-size: 19px !important; font-weight: 800 !important; }
-.foreign-card__country { color: rgba(255,255,255,0.70) !important; font-size: 19px !important; }
+.foreign-card__name    { color: #fff !important; font-weight: 800 !important; }
+.foreign-card__country { color: rgba(255,255,255,0.70) !important; }
 
 /* ============================================================
    VISIT & CONTACT
@@ -931,7 +845,7 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
 .contact-info-block--navy address { color: rgba(255,255,255,0.80) !important; }
 
 .dept-item__ext:hover {
-  background: var(--orange) !important;
+  background: var(--accent) !important;
   color: #fff !important;
   border-radius: var(--radius-sm) !important;
 }
@@ -942,46 +856,44 @@ p  { font-size: 19px; line-height: 1.8; color: var(--text-muted); }
   transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease !important;
 }
 .transport-card:hover { transform: translateY(-5px) !important; box-shadow: var(--shadow-md) !important; }
-.transport-card h3 { font-size: 18px !important; font-weight: 800 !important; color: var(--navy) !important; }
+.transport-card h3 { font-weight: 800 !important; color: var(--navy) !important; }
 
 .form-input, .form-textarea, .form-select {
   border-radius: var(--radius-md) !important;
   border: 2.5px solid var(--border) !important;
-  font-size: 18px !important;
   font-family: 'Nunito', sans-serif !important;
   font-weight: 600 !important;
   color: var(--text) !important;
 }
 .form-input:focus, .form-textarea:focus, .form-select:focus {
-  border-color: var(--orange) !important;
-  box-shadow: 0 0 0 3px var(--orange-light) !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px var(--accent-light) !important;
   outline: none !important;
 }
-.form-label { font-weight: 700 !important; color: var(--navy) !important; font-size: 19px !important; }
+.form-label { font-weight: 700 !important; color: var(--navy) !important; }
 .form-submit-btn {
-  background: linear-gradient(135deg, var(--orange), #5dd49a) !important;
+  background: linear-gradient(135deg, var(--accent), #5dd49a) !important;
   border: none !important;
   border-radius: 50px !important;
   color: #fff !important;
-  font-size: 18px !important;
   font-weight: 800 !important;
   box-shadow: 0 4px 14px rgba(58,158,95,0.38) !important;
 }
 .form-submit-btn:hover {
-  background: linear-gradient(135deg, var(--orange-dark), var(--orange)) !important;
+  background: linear-gradient(135deg, var(--accent-dark), var(--accent)) !important;
   transform: translateY(-2px) !important;
 }
 
 /* ============================================================
-   FONT SIZE OVERRIDES
+   FONT SIZES
+   ------------------------------------------------------------
+   Consolidated. Previously there were two competing passes in
+   this file (an early "bump everything up" pass near the top,
+   and a later "FONT SIZE OVERRIDES" pass near the bottom using
+   the same !important specificity) which silently fought each
+   other based on source order alone. This is now the single
+   pass, so future edits only need to change one place.
    ============================================================ */
-.sidebar-panel__title    { font-size: 17px !important; font-weight: 800 !important; }
-.sidebar-panel__desc     { font-size: 16px !important; line-height: 1.7 !important; }
-.journal-mini-card__title { font-size: 17px !important; font-weight: 700 !important; }
-.journal-mini-card__desc  { font-size: 15px !important; }
-.aqi-widget__desc         { font-size: 15px !important; }
-.aqi-widget__link         { font-size: 15px !important; font-weight: 700 !important; }
-
 p, li, td, th, label, input, textarea, select { font-size: 17px !important; }
 .text-sm  { font-size: 15px !important; }
 .text-xs  { font-size: 14px !important; }
@@ -994,6 +906,42 @@ nav a, .navbar__links a, .navbar__mobile a { font-size: 16px !important; }
 .footer__links a  { font-size: 16px !important; }
 .footer__col-title { font-size: 14px !important; }
 .footer__copy, .footer__bottom-links a { font-size: 14px !important; }
+.sidebar-panel__title    { font-size: 17px !important; font-weight: 800 !important; }
+.sidebar-panel__desc     { font-size: 16px !important; line-height: 1.7 !important; }
+.journal-mini-card__title { font-size: 17px !important; font-weight: 700 !important; }
+.journal-mini-card__desc  { font-size: 15px !important; }
+.aqi-widget__desc         { font-size: 15px !important; }
+.aqi-widget__link         { font-size: 15px !important; font-weight: 700 !important; }
+.home-block__title    { font-size: 18px !important; }
+.home-block__more     { font-size: 18px !important; }
+.honours-item__text p      { font-size: 18px !important; }
+.honours-item__date        { font-size: 18px !important; }
+.home-block .home-news-card__title { font-size: 18px !important; }
+.home-block .home-news-card__excerpt { font-size: 19px !important; }
+.stats-strip__num { font-size: 24px !important; }
+.stats-strip__label { font-size: 19px !important; }
+.program-card__title { font-size: 20px !important; }
+.program-card__desc  { font-size: 19px !important; }
+.program-card__subjects li { font-size: 18px !important; }
+.nearby-card h4 { font-size: 18px !important; }
+.nearby-card p  { font-size: 18px !important; }
+.curriculum-table thead th { font-size: 18px !important; }
+.news-card__excerpt { font-size: 19px !important; }
+.teachers-stats__num   { font-size: 24px !important; }
+.teachers-stats__label { font-size: 19px !important; }
+.teacher-card__name { font-size: 19px !important; }
+.foreign-card__name    { font-size: 19px !important; }
+.foreign-card__country { font-size: 19px !important; }
+.contact-info-block--navy .contact-info-block__title { font-size: inherit; }
+.transport-card h3 { font-size: 18px !important; }
+.form-input, .form-textarea, .form-select { font-size: 18px !important; }
+.form-label { font-size: 19px !important; }
+.form-submit-btn { font-size: 18px !important; }
+.footer__desc { font-size: 16px !important; }
+.footer__links a { font-size: 17px !important; }
+.footer__contact-item { font-size: 16px !important; }
+.footer__copy { font-size: 15px !important; }
+.footer__bottom-links a { font-size: 15px !important; }
 
 /* ============================================================
    CTA STRIP
@@ -1062,14 +1010,14 @@ nav a, .navbar__links a, .navbar__mobile a { font-size: 16px !important; }
    MISC
    ============================================================ */
 .divider { border-top: 3px dashed var(--border); }
-.skip-link { background: var(--orange); font-weight: 800; }
+.skip-link { background: var(--accent); font-weight: 800; }
 
 ::selection { background: var(--green-light); color: var(--text); }
 
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--bg-white); }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(var(--orange), var(--teal));
+  background: linear-gradient(var(--accent), var(--teal));
   border-radius: 6px;
 }
 
